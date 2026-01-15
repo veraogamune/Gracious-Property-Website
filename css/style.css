@@ -329,6 +329,93 @@ body {
     opacity: 0.9;
 }
 
+/* CTA Section */
+.cta-section {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #5b7c99 0%, #4a6380 100%);
+    color: white;
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.cta-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.cta-primary {
+    background: white;
+    color: #2c5f7c;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cta-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.cta-video {
+    background: transparent;
+    color: white;
+    padding: 1rem 2rem;
+    border: 2px solid white;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.cta-video:hover {
+    background: white;
+    color: #2c5f7c;
+    transform: translateY(-3px);
+}
+
+.cta-video i {
+    width: 35px;
+    height: 35px;
+    background: white;
+    color: #2c5f7c;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    padding-left: 3px;
+}
+
+.cta-video:hover i {
+    background: #2c5f7c;
+    color: white;
+}
+
 /* Testimonial Section */
 .testimonial {
     padding: 5rem 0;
@@ -719,5 +806,18 @@ body {
     
     .testimonial-text h2 {
         font-size: 2rem;
+    }
+    
+    .cta-content h2 {
+        font-size: 2rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+    }
+    
+    .cta-primary, .cta-video {
+        width: 100%;
+        justify-content: center;
     }
 }

@@ -329,6 +329,104 @@ body {
     opacity: 0.9;
 }
 
+/* Blog & Articles Section */
+.blog {
+    padding: 5rem 0;
+    background-color: #fff;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.blog-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.blog-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.blog-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+}
+
+.blog-image .image-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #5b7c99 0%, #4a6380 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: white;
+    transition: all 0.3s;
+}
+
+.blog-card:hover .image-placeholder {
+    transform: scale(1.1);
+}
+
+.blog-date {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #2c3e50;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.blog-content {
+    padding: 2rem;
+}
+
+.blog-content h3 {
+    font-size: 1.3rem;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.blog-content p {
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.read-more {
+    color: #2c5f7c;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s;
+}
+
+.read-more:hover {
+    gap: 1rem;
+    color: #1e4560;
+}
+
+.read-more i {
+    font-size: 0.9rem;
+}
+
 /* CTA Section */
 .cta-section {
     padding: 5rem 0;
@@ -819,5 +917,13 @@ body {
     .cta-primary, .cta-video {
         width: 100%;
         justify-content: center;
+    }
+    
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .blog-image {
+        height: 200px;
     }
 }

@@ -51,6 +51,25 @@ document.addEventListener('DOMContentLoaded', () => {
             // You can add actual video player functionality later
         });
     }
+    
+    // Newsletter form functionality
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+        const submitButton = newsletterForm.querySelector('button');
+        const emailInput = newsletterForm.querySelector('input');
+        
+        submitButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            const email = emailInput.value;
+            
+            if (email && email.includes('@')) {
+                alert('Thank you for subscribing! We\'ll send updates to ' + email);
+                emailInput.value = '';
+            } else {
+                alert('Please enter a valid email address');
+            }
+        });
+    }
 });
 
 // Smooth scrolling for navigation links

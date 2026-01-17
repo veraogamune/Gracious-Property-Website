@@ -1004,4 +1004,128 @@ body {
     border-radius: 12px;
     font-size: 1rem;
     outline: none;
-    color
+    color: white;
+    transition: all 0.3s;
+}
+
+.newsletter-form input::placeholder {
+    color: #94a3b8;
+}
+
+.newsletter-form input:focus {
+    border-color: #3b82f6;
+    background: rgba(30, 41, 59, 0.7);
+}
+
+.newsletter-form button {
+    background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+    color: white;
+    padding: 1.2rem 3rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+.newsletter-form button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+}
+
+/* Footer */
+.footer {
+    background: #0a0f1e;
+    color: white;
+    padding: 5rem 0 2rem;
+    border-top: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+}
+
+.footer-column h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.footer-column h4 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: #f1f5f9;
+}
+
+.footer-column p {
+    color: #94a3b8;
+    line-height: 1.9;
+    margin-bottom: 2rem;
+}
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-social a {
+    width: 45px;
+    height: 45px;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3b82f6;
+    transition: all 0.3s;
+}
+
+.footer-social a:hover {
+    background: #3b82f6;
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 1rem;
+}
+
+.footer-column ul li a {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: #3b82f6;
+    padding-left: 8px;
+}
+
+.work-hours li {
+    color: #94a3b8;
+    margin-bottom: 1rem;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(59, 130, 246, 0.1);
+    padding-top: 2rem;
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: #64748b;
+}

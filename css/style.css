@@ -274,57 +274,146 @@ body {
     margin-left: 3px;
 }
 
-/* Feature Cards Section */
+/* Feature Cards Section - Updated for 3 Services */
 .features {
     padding: 5rem 0;
     background: #0f172a;
 }
 
-.feature-grid {
+.feature-grid-three {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin-top: 3rem;
 }
 
-.feature-card {
+.feature-card-large {
     background: rgba(30, 41, 59, 0.5);
     backdrop-filter: blur(10px);
-    padding: 2.5rem 1.5rem;
+    padding: 3rem 2rem;
     border-radius: 20px;
     text-align: center;
     color: white;
     transition: all 0.4s;
     cursor: pointer;
     border: 1px solid rgba(59, 130, 246, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.feature-card:hover {
+.feature-card-large:hover {
     transform: translateY(-15px);
     background: rgba(59, 130, 246, 0.1);
     border-color: #3b82f6;
     box-shadow: 0 20px 50px rgba(59, 130, 246, 0.3);
 }
 
-.feature-card.featured {
+.feature-card-large.featured {
     background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
     border-color: #3b82f6;
 }
 
-.feature-icon {
-    font-size: 3.5rem;
+.feature-card-large .feature-icon {
+    font-size: 4rem;
     margin-bottom: 1.5rem;
     filter: drop-shadow(0 5px 10px rgba(59, 130, 246, 0.3));
 }
 
-.feature-card h3 {
-    font-size: 1.4rem;
+.feature-card-large h3 {
+    font-size: 1.6rem;
     margin-bottom: 1rem;
 }
 
-.feature-card p {
-    font-size: 1rem;
-    line-height: 1.6;
+.feature-card-large p {
+    font-size: 1.05rem;
+    line-height: 1.7;
     opacity: 0.9;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+.feature-link {
+    color: #3b82f6;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s;
+    margin-top: auto;
+}
+
+.feature-card-large.featured .feature-link {
+    color: white;
+}
+
+.feature-link:hover {
+    gap: 1rem;
+}
+
+.feature-link i {
+    font-size: 0.9rem;
+}
+
+/* Digital Services Offerings Section */
+.digital-services-offerings {
+    padding: 5rem 0;
+    background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+}
+
+.digital-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.digital-card {
+    background: rgba(30, 41, 59, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    transition: all 0.4s;
+}
+
+.digital-card:hover {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: #3b82f6;
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3);
+}
+
+.digital-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    color: white;
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+}
+
+.digital-card h4 {
+    font-size: 1.3rem;
+    color: #f1f5f9;
+    margin-bottom: 0.5rem;
+}
+
+.digital-card p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+.digital-cta {
+    text-align: center;
+    margin-top: 3rem;
 }
 
 /* About Us Section */

@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     // Observe feature cards
-    const cards = document.querySelectorAll('.feature-card, .service-card, .blog-card, .process-step');
+    const cards = document.querySelectorAll('.feature-card-large, .service-card, .blog-card, .process-step, .digital-card, .info-card');
     cards.forEach((card, index) => {
         card.style.transitionDelay = `${index * 0.1}s`;
         card.classList.add('fade-in');
@@ -72,6 +72,28 @@ document.addEventListener('DOMContentLoaded', () => {
     if (playButton) {
         playButton.addEventListener('click', () => {
             alert('Video player would open here!');
+        });
+    }
+    
+    // Contact form submission
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData);
+            
+            // Placeholder for actual form submission
+            alert('Thank you for reaching out! We will get back to you soon.');
+            contactForm.reset();
+            
+            // In production, you would send this data to your backend:
+            // fetch('/api/contact', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(data)
+            // });
         });
     }
     

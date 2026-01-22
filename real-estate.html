@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate - Gracious Property</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/real-estate.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Gracious Property Logo">
+                <h2>Gracious Property</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="real-estate.html" class="active">Real Estate</a></li>
+                <li><a href="apartments.html">Next Level Apartment</a></li>
+                <li><a href="digital-services.html">Digital Services</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="real-estate-hero">
+        <div class="container">
+            <h1>Find Your Perfect Property</h1>
+            <p>Browse our extensive collection of properties for sale, lease, and rent</p>
+        </div>
+    </section>
+
+    <!-- Search & Filter Section -->
+    <section class="search-filter">
+        <div class="container">
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search by name or location...">
+                </div>
+                
+                <div class="filter-group">
+                    <select id="typeFilter">
+                        <option value="all">All Types</option>
+                        <option value="house">Houses</option>
+                        <option value="land">Land</option>
+                        <option value="commercial">Commercial</option>
+                        <option value="apartment">Apartments</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <select id="statusFilter">
+                        <option value="all">All Status</option>
+                        <option value="sale">For Sale</option>
+                        <option value="lease">For Lease</option>
+                        <option value="rent">For Rent</option>
+                    </select>
+                </div>
+                
+                <button class="filter-button" id="filterBtn">
+                    <i class="fas fa-filter"></i> Apply Filters
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Properties Listing Section -->
+    <section class="properties-section">
+        <div class="container">
+            <div class="section-stats">
+                <h3><span id="propertyCount">12</span> Properties Available</h3>
+            </div>
+            
+            <div class="properties-grid" id="propertiesGrid">
+                <!-- Property Card 1 -->
+                <div class="property-card" data-type="house" data-status="sale">
+                    <div class="property-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="property-badge sale">For Sale</div>
+                    </div>
+                    <div class="property-details">
+                        <h3 class="property-name">Luxury 4-Bedroom Duplex</h3>
+                        <div class="property-meta">
+                            <span class="property-type"><i class="fas fa-building"></i> House</span>
+                            <span class="property-doc"><i class="fas fa-file-alt"></i> C of O</span>
+                        </div>
+                        <p class="property-description">
+                            Beautiful 4-bedroom duplex in prime Lekki location. Modern finishes, spacious rooms, and excellent security.
+                        </p>
+                        <div class="property-footer">
+                            <div class="property-price">₦85,000,000</div>
+                            <button class="contact-btn">
+                                <i class="fas fa-phone"></i> Contact Agent
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Card 2 -->
+                <div class="property-card" data-type="land" data-status="sale">
+                    <div class="property-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-map"></i>
+                        </div>
+                        <div class="property-badge sale">For Sale</div>
+                    </div>
+                    <div class="property-details">
+                        <h3 class="property-name">600sqm Plot in Ikoyi</h3>
+                        <div class="property-meta">
+                            <span class="property-type"><i class="fas fa-mountain"></i> Land</span>
+                            <span class="property-doc"><i class="fas fa-file-alt"></i> Deed of Assignment</span>
+                        </div>
+                        <p class="property-description">
+                            Prime 600sqm land in highbrow Ikoyi area. Perfect for residential or commercial development. Clean documentation.
+                        </p>
+                        <div class="property-footer">
+                            <div class="property-price">₦120,000,000</div>
+                            <button class="contact-btn">
+                                <i class="fas fa-phone"></i> Contact Agent
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Card 3 -->
+                <div class="property-card" data-type="commercial" data-status="lease">
+                    <div class="property-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <div class="property-badge lease">For Lease</div>
+                    </div>
+                    <div class="property-details">
+                        <h3 class="property-name">Commercial Space - VI</h3>
+                        <div class="property-meta">
+                            <span class="property-type"><i class="fas fa-briefcase"></i> Commercial</span>
+                            <span class="property-doc"><i class="fas fa-file-alt"></i> Lease Agreement</span>
+                        </div>
+                        <p class="property-description">
+                            200sqm commercial space in Victoria Island. High foot traffic area, ideal for retail or office use.
+                        </p>
+                        <div class="property-footer">
+                            <div class="property-price">₦3,500,000/year</div>
+                            <button class="contact-btn">
+                                <i class="fas fa-phone"></i> Contact Agent
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Card 4 -->
+                <div class="property-card" data-type="apartment" data-status="rent">
+                    <div class="property-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="property-badge rent">For Rent</div>
+                    </div>
+                    <div class="property-details">
+                        <h3 class="property-name">3-Bedroom Flat - Yaba</h3>
+                        <div class="property-meta">
+                            <span class="property-type"><i class="fas fa-door-open"></i> Apartment</span>
+                            <span class="property-doc"><i class="fas fa-file-alt"></i> Tenancy Agreement</span>
+                        </div>
+                        <p class="property-description">
+                            Well-maintained 3-bedroom apartment in serene Yaba neighborhood. Close to amenities and transport.
+                        </p>
+                        <div class="property-footer">
+                            <div class="property-price">₦1,200,000/year</div>
+                            <button class="contact-btn">
+                                <i class="fas fa-phone"></i> Contact Agent
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Card 5 -->
+                <div class="property-card" data-type="house" data-status="sale">
+                    <div class="property-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="property-badge sale">For Sale</div>
+                    </div>
+                    <div class="property-details">
+                        <h3 class="property-name">5-Bedroom Detached House</h3>
+                        <div class="property-meta">
+                            <span class="property-type"><i class="fas fa-building"></i> House</span>
+                            <span class="property-doc"><i class="fas fa-file-alt"></i> C of O</span>
+                        </div>
+                        <p class="property-description">
+                            Spacious 5-bedroom detached house in Ikeja GRA. Swimming pool, boys quarters, and ample parking space.
+                        </p>
+                        <div class="property-footer">
+                            <div class="property-price">₦95,000,000</div>
+                            <button class="contact-btn">
+                                <i class="fas fa-phone"></i> Contact Agent
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Card 6 -->
+                <div class="property-card" data-type="land" data-status="sale">
+                    <div class="property-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-map"></i>
+                        </div>
+                        <div class="property-badge sale">For Sale</div>
+                    </div>
+                    <div class="property-details">
+                        <h3 class="property-name">1000sqm Land - Ajah</h3>
+                        <div class="property-meta">
+                            <span class="property-type"><i class="fas fa-mountain"></i> Land</span>
+                            <span class="property-doc"><i class="fas fa-file-alt"></i> Survey Plan</span>
+                        </div>
+                        <p class="property-description">
+                            1000sqm dry land in fast-developing Ajah axis. Close to major roads and Lekki-Epe expressway.
+                        </p>
+                        <div class="property-footer">
+                            <div class="property-price">₦25,000,000</div>
+                            <button class="contact-btn">
+                                <i class="fas fa-phone"></i> Contact Agent
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add more property cards as needed -->
+            </div>
+
+            <div class="load-more-container">
+                <button class="load-more-btn">
+                    Load More Properties <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Can't Find What You're Looking For?</h2>
+            <p>Contact us directly and let us help you find your perfect property</p>
+            <a href="index.html#contact" class="cta-btn">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Gracious Property</h3>
+                    <p>Your trusted partner in Real Estate, Serviced Apartments, and Digital Services.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="real-estate.html">Real Estate</a></li>
+                        <li><a href="apartments.html">Apartments</a></li>
+                        <li><a href="digital-services.html">Digital Services</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contact Info</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i> +234 123 456 7890</li>
+                        <li><i class="fas fa-envelope"></i> info@graciousproperty.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Work Hours</h4>
+                    <ul class="work-hours">
+                        <li>Mon - Fri: 9:00 AM - 6:00 PM</li>
+                        <li>Sat: 10:00 AM - 4:00 PM</li>
+                        <li>Sunday: Closed</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Gracious Property. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/real-estate.js"></script>
+</body>
+</html>

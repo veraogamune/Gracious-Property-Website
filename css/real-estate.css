@@ -321,6 +321,104 @@
     transform: translateY(-2px);
 }
 
+/* Testimonials Section */
+.testimonials-section {
+    padding: 6rem 0;
+    background: #0f172a;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin-top: 4rem;
+}
+
+.testimonial-card {
+    background: rgba(30, 41, 59, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    transition: all 0.4s;
+}
+
+.testimonial-card:hover {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: #3b82f6;
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(59, 130, 246, 0.3);
+}
+
+.testimonial-card .stars {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    color: #fbbf24;
+}
+
+.testimonial-text {
+    color: #cbd5e1;
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+.testimonial-author {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.author-avatar {
+    width: 55px;
+    height: 55px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+}
+
+.author-details h4 {
+    font-size: 1.1rem;
+    color: #f1f5f9;
+    margin-bottom: 0.3rem;
+}
+
+.author-location {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    margin-bottom: 0.2rem;
+}
+
+.purchase-type {
+    font-size: 0.85rem;
+    color: #3b82f6;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* CTA Section */
 .cta-section {
     padding: 5rem 0;

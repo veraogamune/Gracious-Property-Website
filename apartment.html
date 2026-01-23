@@ -68,9 +68,11 @@
             </div>
             
             <div class="locations-grid">
-                <div class="location-card" data-location="yaba">
-                    <div class="location-icon">
-                        <i class="fas fa-map-marker-alt"></i>
+                <div class="location-card" data-location="Yaba">
+                    <div class="location-images">
+                        <img src="images/yaba-1.jpg" alt="Yaba apartment exterior">
+                        <img src="images/yaba-2.jpg" alt="Yaba common area">
+                        <img src="images/yaba-3.jpg" alt="Yaba bedroom">
                     </div>
                     <h3>Yaba</h3>
                     <p class="location-address">15 Herbert Macaulay Way, Yaba, Lagos</p>
@@ -81,9 +83,11 @@
                     <button class="select-location-btn" data-location="Yaba">Select Location</button>
                 </div>
 
-                <div class="location-card" data-location="surulere">
-                    <div class="location-icon">
-                        <i class="fas fa-map-marker-alt"></i>
+                <div class="location-card" data-location="Surulere">
+                    <div class="location-images">
+                        <img src="images/surulere-1.jpg" alt="Surulere apartment exterior">
+                        <img src="images/surulere-2.jpg" alt="Surulere common area">
+                        <img src="images/surulere-3.jpg" alt="Surulere bedroom">
                     </div>
                     <h3>Surulere</h3>
                     <p class="location-address">42 Adeniran Ogunsanya Street, Surulere, Lagos</p>
@@ -94,9 +98,11 @@
                     <button class="select-location-btn" data-location="Surulere">Select Location</button>
                 </div>
 
-                <div class="location-card" data-location="ikeja">
-                    <div class="location-icon">
-                        <i class="fas fa-map-marker-alt"></i>
+                <div class="location-card" data-location="Ikeja">
+                    <div class="location-images">
+                        <img src="images/ikeja-1.jpg" alt="Ikeja apartment exterior">
+                        <img src="images/ikeja-2.jpg" alt="Ikeja common area">
+                        <img src="images/ikeja-3.jpg" alt="Ikeja bedroom">
                     </div>
                     <h3>Ikeja</h3>
                     <p class="location-address">78 Allen Avenue, Ikeja, Lagos</p>
@@ -106,8 +112,9 @@
                     </div>
                     <button class="select-location-btn" data-location="Ikeja">Select Location</button>
                 </div>
+                </div>
             </div>
-        </div>
+        </section>
     </section>
 
     <!-- Room Types & Pricing -->
@@ -325,9 +332,9 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label>If Yes, Doctor Info*</label>
-                                <input type="text" name="doctorInfo" required>
+                             <div class="form-group">
+                                <label>If Yes, Doctor Info</label>
+                                <input type="text" name="doctorInfo">
                             </div>
                             
                             <div class="form-group full-width">
@@ -416,6 +423,22 @@
                                 <input type="text" name="emergencyRelation" required>
                             </div>
                         </div>
+                        <div class="form-group full-width">
+                                <label>Guarantor's Name (1) *</label>
+                                <input type="text" name="guarantorName1" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Guarantor's Phone (1) *</label>
+                                <input type="tel" name="guarantorPhone1" required>
+                            </div>
+                            <div class="form-group full-width">
+                                <label>Guarantor's Name (2) *</label>
+                                <input type="text" name="guarantorName2" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Guarantor's Phone (2) *</label>
+                                <input type="tel" name="guarantorPhone2" required>
+                            </div>
                         <div class="button-group">
                             <button type="button" class="prev-btn">Previous</button>
                             <button type="button" class="next-btn">Next Step</button>
@@ -447,6 +470,20 @@
                                 </label>
                                 <span class="file-name" id="photoFileName">No file chosen</span>
                             </div>
+                        </div>
+                        <div class="form-group full-width">
+                            <label class="declaration-checkbox">
+                                <input type="checkbox" name="declaration" required>
+                                <span class="checkbox-text">
+                                    I hereby declare that the information provided is true, complete, and accurate. 
+            I fully understand that if I fail to comply with the terms and conditions of the 
+            BEDSPACE APARTMENT, or if any of the above declarations are found to be untrue, or 
+            if I am convicted of any criminal act against the FRN or declared wanted, the 
+            allotment of the bedspace will be terminated with immediate effect, and 
+            NEXT LEVEL RESOURCES shall be free from any form of liability and may disclose 
+            my information where necessary.
+                                </span>
+                            </label>
                         </div>
                         <div class="button-group">
                             <button type="button" class="prev-btn">Previous</button>

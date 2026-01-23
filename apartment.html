@@ -407,8 +407,8 @@
                                 </div>
                             </div>
                             <div class="form-group full-width">
-                                <label>Home Address</label>
-                                <textarea name="address" rows="3"></textarea>
+                                <label>Home Address *</label>
+                                <textarea name="address" rows="3" required></textarea>
                             </div>
                             <div class="form-group full-width">
                                 <label>Emergency Contact Name *</label>
@@ -512,12 +512,16 @@
                                 <strong id="twoMonths">₦0</strong>
                             </div>
                             <div class="breakdown-item">
-                                <span>Caution Fee:</span>
-                                <strong>₦10,000</strong>
+                                <span>Registration Fee:</span>
+                                <strong id="registrationFee">₦7,000</strong>
                             </div>
                             <div class="breakdown-item">
-                                <span>Admin Fee:</span>
-                                <strong>₦5,000</strong>
+                                <span>Caution Fee:</span>
+                                <strong id="cautionFee">₦5,000</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Gas Fee:</span>
+                                <strong id="gasFee">₦6,000</strong>
                             </div>
                             <div class="breakdown-total">
                                 <span>Total Initial Payment:</span>
@@ -527,7 +531,7 @@
 
                         <div class="payment-note">
                             <i class="fas fa-info-circle"></i>
-                            <p>Your booking request will be sent for approval. Once approved, you will receive payment instructions via email and SMS.</p>
+                            <p>Your booking request will be sent for approval. Once approved, you will receive payment instructions via email and Whatsapp.</p>
                         </div>
 
                         <div class="button-group">
@@ -624,7 +628,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Initial payment covers 2 months rent plus caution fee (₦10,000) and admin fee (₦5,000). Subsequent payments are monthly.</p>
+                        <p>Initial payment covers 2 months rent plus registration fee (₦7,000), caution fee (₦5,000) and gas fee - 2 months (₦6,000). Subsequent payments are monthly.</p>
                     </div>
                 </div>
 
@@ -644,7 +648,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes! Electricity, water, gas, and 24/7 security are all included in your monthly rent.</p>
+                        <p>Yes! Electricity, water, bedspreads, kitchen utensils, gas cylinders and 24/7 security with many more are all included in your monthly rent.</p>
                     </div>
                 </div>
 

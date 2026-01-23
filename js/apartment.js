@@ -253,9 +253,10 @@ function updatePaymentSummary() {
     else if (roomType.includes('₦18,000')) monthlyRent = 18000;
     
     const twoMonths = monthlyRent * 2;
-    const cautionFee = 10000;
-    const adminFee = 5000;
-    const total = twoMonths + cautionFee + adminFee;
+    const registrationFee = 7000;
+    const cautionFee = 5000;
+    const gasFee = 5000;
+    const total = twoMonths + registrationFee + cautionFee + gasFee;
     
     document.getElementById('monthlyRent').textContent = `₦${monthlyRent.toLocaleString()}`;
     document.getElementById('twoMonths').textContent = `₦${twoMonths.toLocaleString()}`;

@@ -131,8 +131,8 @@ form.addEventListener('submit', (e) => {
     
     console.log('Booking Data:', data);
     
-    // Show success message
-    showSuccessMessage();
+    // Show success popup
+    showSuccessPopup();
     
     // Reset form after delay
     setTimeout(() => {
@@ -149,8 +149,7 @@ form.addEventListener('submit', (e) => {
     // .then(response => response.json())
     // .then(result => {
     //     if (result.success) {
-    //         showSuccessMessage();
-    //         // Optionally send confirmation email here
+    //         showSuccessPopup();
     //     }
     // })
     // .catch(error => {
@@ -332,5 +331,21 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 
+// Show Success Popup
+function showSuccessPopup() {
+    const overlay = document.getElementById('successOverlay');
+    overlay.classList.add('show');
+    
+    // Auto close after 8 seconds
+    setTimeout(() => {
+        closeSuccessPopup();
+    }, 8000);
+}
+
+// Close Success Popup
+function closeSuccessPopup() {
+    const overlay = document.getElementById('successOverlay');
+    overlay.classList.remove('show');
+}
 
 });

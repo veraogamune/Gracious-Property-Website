@@ -122,28 +122,41 @@ function initBookingForm() {
     }
     
     // Form submission
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData);
-        
-        console.log('Booking Data:', data);
-        
-        alert('Booking request submitted successfully! We will review your application and contact you within 24-48 hours with approval status and payment instructions.');
-        
-        // Reset form
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    // Get form data
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+    
+    console.log('Booking Data:', data);
+    
+    // Show success message
+    showSuccessMessage();
+    
+    // Reset form after delay
+    setTimeout(() => {
         form.reset();
         goToStep(1);
-        
-        // In production, send to backend:
-        // fetch('/api/bookings', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify(data)
-        // });
-    });
+    }, 3000);
+    
+    // TODO: Send to backend when ready
+    // fetch('/api/apartment-bookings', {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify(data)
+    // })
+    // .then(response => response.json())
+    // .then(result => {
+    //     if (result.success) {
+    //         showSuccessMessage();
+    //         // Optionally send confirmation email here
+    //     }
+    // })
+    // .catch(error => {
+    //     alert('An error occurred. Please try again.');
+    // });
+});
 }
 
 // Occupation Conditional Fields
@@ -318,4 +331,5 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             });
         }
     });
+    
 });

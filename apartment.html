@@ -74,8 +74,9 @@
                         <img src="images/yaba-2.jpg" alt="Yaba common area">
                         <img src="images/yaba-3.jpg" alt="Yaba bedroom">
                     </div>
-                    <h3>Yaba</h3>
-                    <p class="location-address">15 Herbert Macaulay Way, Yaba, Lagos</p>
+                    <h3>Ketu</h3>
+                    <p class="location-address">29 Adebayo Street, Ketu, Lagos</p>
+                    <p class="location-address">36 Adebayo Street, Ketu, Lagos</p>
                     <div class="location-info">
                         <span><i class="fas fa-bed"></i> 24 Spaces Available</span>
                         <span><i class="fas fa-door-open"></i> 4, 6, 8 Bed Rooms</span>
@@ -89,13 +90,13 @@
                         <img src="images/surulere-2.jpg" alt="Surulere common area">
                         <img src="images/surulere-3.jpg" alt="Surulere bedroom">
                     </div>
-                    <h3>Surulere</h3>
-                    <p class="location-address">42 Adeniran Ogunsanya Street, Surulere, Lagos</p>
+                    <h3>Yaba</h3>
+                    <p class="location-address">Coming soon</p>
                     <div class="location-info">
-                        <span><i class="fas fa-bed"></i> 18 Spaces Available</span>
-                        <span><i class="fas fa-door-open"></i> 6, 8, 12 Bed Rooms</span>
+                        <span><i class="fas fa-bed"></i> No Spaces Available</span>
+                        <span><i class="fas fa-door-open"></i> Bed Rooms</span>
                     </div>
-                    <button class="select-location-btn" data-location="Surulere">Select Location</button>
+                    <button class="select-location-btn" data-location="Surulere">Not Available</button>
                 </div>
 
                 <div class="location-card" data-location="Ikeja">
@@ -105,12 +106,12 @@
                         <img src="images/ikeja-3.jpg" alt="Ikeja bedroom">
                     </div>
                     <h3>Ikeja</h3>
-                    <p class="location-address">78 Allen Avenue, Ikeja, Lagos</p>
+                    <p class="location-address">Coming Soon</p>
                     <div class="location-info">
-                        <span><i class="fas fa-bed"></i> 20 Spaces Available</span>
-                        <span><i class="fas fa-door-open"></i> 4, 6, 8 Bed Rooms</span>
+                        <span><i class="fas fa-bed"></i> No Spaces Available</span>
+                        <span><i class="fas fa-door-open"></i> Bed Rooms</span>
                     </div>
-                    <button class="select-location-btn" data-location="Ikeja">Select Location</button>
+                    <button class="select-location-btn" data-location="Ikeja">Not Available</button>
                 </div>
                 </div>
             </div>
@@ -546,6 +547,21 @@
         </div>
     </section>
 
+   <!-- Success Popup -->
+<div class="success-overlay" id="successOverlay" style="display: none;">
+    <div class="success-card">
+        <div class="success-icon">
+            <i class="fas fa-check"></i>
+        </div>
+        <h2>Registration Successful!</h2>
+        <p>
+            Thank you for your booking request. Check your email within the next 
+            <strong>24-48 hours</strong> for approval and payment instructions.
+        </p>
+        <button class="close-success-btn" onclick="closeSuccessPopup()">Close</button>
+    </div>
+</div>
+
     <!-- Support/Complaint Section -->
     <section class="support-section">
         <div class="container">
@@ -724,20 +740,6 @@
             </div>
         </div>
     </footer>
-<!-- Success Popup -->
-    <div class="success-overlay" id="successOverlay">
-        <div class="success-card">
-            <div class="success-icon">
-                <i class="fas fa-check"></i>
-            </div>
-            <h2>Registration Successful!</h2>
-            <p>
-                Thank you for your booking request. Check your email within the next 
-                <strong>24-48 hours</strong> for approval and payment instructions.
-            </p>
-            <button class="close-success-btn" onclick="closeSuccessPopup()">Close</button>
-        </div>
-    </div>
 
     <script src="js/apartment.js"></script>
 </body>

@@ -954,15 +954,15 @@
     height: 100%;
     background: rgba(15, 23, 42, 0.95);
     backdrop-filter: blur(10px);
-    display: none;
+    display: none; /* Hidden by default */
     align-items: center;
     justify-content: center;
     z-index: 10000;
-    animation: fadeIn 0.3s;
 }
 
 .success-overlay.show {
-    display: flex;
+    display: flex !important; /* Show when class is added */
+    animation: fadeIn 0.3s;
 }
 
 .success-card {
@@ -1011,6 +1011,7 @@
 
 .success-card strong {
     color: #3b82f6;
+    font-weight: 700;
 }
 
 .close-success-btn {

@@ -125,6 +125,10 @@ function initBookingForm() {
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     
+    if (!validateCurrentStep(5)) {
+        return;
+    }
+    
     // Get form data
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
@@ -139,6 +143,7 @@ form.addEventListener('submit', (e) => {
         form.reset();
         goToStep(1);
     }, 3000);
+
     
     // TODO: Send to backend when ready
     // fetch('/api/apartment-bookings', {
@@ -331,21 +336,31 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 
-// Show Success Popup
+// Show Success Popup - Must be OUTSIDE DOMContentLoaded
 function showSuccessPopup() {
     const overlay = document.getElementById('successOverlay');
-    overlay.classList.add('show');
-    
-    // Auto close after 8 seconds
-    setTimeout(() => {
-        closeSuccessPopup();
-    }, 8000);
+    if (overlay) {
+        overlay.style.display = 'flex';
+        overlay.classList.add('show');
+        
+        // Auto close after 8 seconds
+        setTimeout(() => {
+            closeSuccessPopup();
+        }, 8000);
+    } else {
+        console.error('Success overlay not found');
+    }
 }
 
-// Close Success Popup
+// Close Success Popup - Must be OUTSIDE DOMContentLoaded
 function closeSuccessPopup() {
     const overlay = document.getElementById('successOverlay');
-    overlay.classList.remove('show');
+    if (overlay) {
+        overlay.classList.remove('show');
+        setTimeout(() => {
+            overlay.style.display = 'none';
+        }, 300);
+    }
 }
 
 });

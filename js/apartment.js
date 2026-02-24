@@ -264,15 +264,14 @@ function updatePaymentSummary() {
     
     // Extract monthly rent from room type
     let monthlyRent = 0;
-    if (roomType.includes('₦35,000')) monthlyRent = 35000;
-    else if (roomType.includes('₦28,000')) monthlyRent = 28000;
-    else if (roomType.includes('₦22,000')) monthlyRent = 22000;
-    else if (roomType.includes('₦18,000')) monthlyRent = 18000;
+    if (roomType.includes('₦20,000')) monthlyRent = 20000;
+    else if (roomType.includes('₦25,000')) monthlyRent = 25000;
+
     
     const twoMonths = monthlyRent * 2;
     const registrationFee = 7000;
     const cautionFee = 5000;
-    const gasFee = 5000;
+    const gasFee = 6000;
     const total = twoMonths + registrationFee + cautionFee + gasFee;
     
     document.getElementById('monthlyRent').textContent = `₦${monthlyRent.toLocaleString()}`;

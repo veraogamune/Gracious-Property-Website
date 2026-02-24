@@ -957,26 +957,37 @@
     }
     
     /* Success Popup */
+/* ========================================
+   SUCCESS POPUP STYLES
+   Full-screen overlay on all devices
+   ======================================== */
+
 .success-overlay {
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     width: 100%;
     height: 100%;
     background: rgba(15, 23, 42, 0.95);
     backdrop-filter: blur(10px);
-    display: none; /* Hidden by default */
+    visibility: hidden;
+    opacity: 0;
+    display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10000;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    z-index: 1000;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
+/* Show state - triggered by JavaScript */
 .success-overlay.show {
+    visibility: visible;
     opacity: 1;
 }
 
+/* Success card container - centered content */
 .success-card {
     background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
     backdrop-filter: blur(10px);
@@ -984,17 +995,20 @@
     border-radius: 25px;
     padding: 3rem;
     max-width: 500px;
-    width: 90%;
+    width: calc(100% - 2rem); /* Responsive width with margin */
+    margin: 1rem;
     text-align: center;
     box-shadow: 0 20px 60px rgba(59, 130, 246, 0.4);
-    transform: translateY(50px);
+    transform: translateY(30px); /* Initial position for animation */
     transition: transform 0.5s ease;
 }
 
+/* Card animation when overlay is shown */
 .success-overlay.show .success-card {
     transform: translateY(0);
 }
 
+/* Checkmark icon circle */
 .success-icon {
     width: 80px;
     height: 80px;
@@ -1012,6 +1026,7 @@
     color: white;
 }
 
+/* Success message heading */
 .success-card h2 {
     font-size: 2rem;
     color: #f1f5f9;
@@ -1019,6 +1034,7 @@
     font-weight: 700;
 }
 
+/* Success message text */
 .success-card p {
     color: #cbd5e1;
     font-size: 1.1rem;
@@ -1026,11 +1042,13 @@
     margin-bottom: 2rem;
 }
 
+/* Highlighted text (24-48 hours) */
 .success-card strong {
     color: #3b82f6;
     font-weight: 700;
 }
 
+/* Close button */
 .close-success-btn {
     background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
     color: white;
@@ -1046,6 +1064,53 @@
 .close-success-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+}
+
+/* ========================================
+   RESPONSIVE ADJUSTMENTS
+   Mobile and small screen optimizations
+   ======================================== */
+
+@media (max-width: 768px) {
+    /* Reduce padding on small screens */
+    .success-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    /* Smaller heading on mobile */
+    .success-card h2 {
+        font-size: 1.5rem;
+    }
+    
+    /* Adjust text size for readability */
+    .success-card p {
+        font-size: 1rem;
+    }
+    
+    /* Smaller icon on mobile */
+    .success-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .success-icon i {
+        font-size: 2rem;
+    }
+    
+    /* Adjust button for mobile */
+    .close-success-btn {
+        width: 100%;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Extra small screens */
+    .success-card {
+        width: calc(100% - 1rem);
+        margin: 0.5rem;
+        padding: 1.5rem;
+    }
 }
 
 @keyframes fadeIn {

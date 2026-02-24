@@ -969,15 +969,16 @@
     align-items: center;
     justify-content: center;
     z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .success-overlay.show {
-    display: flex !important; /* Show when class is added */
-    animation: fadeIn 0.3s;
+    opacity: 1;
 }
 
 .success-card {
-    background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%);
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
     backdrop-filter: blur(10px);
     border: 2px solid #3b82f6;
     border-radius: 25px;
@@ -986,7 +987,12 @@
     width: 90%;
     text-align: center;
     box-shadow: 0 20px 60px rgba(59, 130, 246, 0.4);
-    animation: slideUp 0.5s;
+    transform: translateY(50px);
+    transition: transform 0.5s ease;
+}
+
+.success-overlay.show .success-card {
+    transform: translateY(0);
 }
 
 .success-icon {

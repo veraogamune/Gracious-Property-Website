@@ -125,9 +125,9 @@ function initBookingForm() {
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     
-    if (!validateCurrentStep(5)) {
+    if (!validateCurrentStep(5)) 
         return;
-    }
+    
     
     // Get form data
     const formData = new FormData(form);
@@ -334,32 +334,36 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             });
         }
     });
-
-// Show Success Popup - Must be OUTSIDE DOMContentLoaded
+});
+// ================= SUCCESS POPUP (GLOBAL) =================
+// Show Success Popup
 function showSuccessPopup() {
     const overlay = document.getElementById('successOverlay');
     if (overlay) {
+        // Remove inline style and add show class
         overlay.style.display = 'flex';
         overlay.classList.add('show');
+        
+        console.log('Popup shown!'); // Test message
         
         // Auto close after 8 seconds
         setTimeout(() => {
             closeSuccessPopup();
         }, 8000);
     } else {
-        console.error('Success overlay not found');
+        console.error('Success overlay element not found!');
     }
 }
 
-// Close Success Popup - Must be OUTSIDE DOMContentLoaded
+// Close Success Popup
 function closeSuccessPopup() {
     const overlay = document.getElementById('successOverlay');
     if (overlay) {
         overlay.classList.remove('show');
+        // Wait for animation then hide
         setTimeout(() => {
             overlay.style.display = 'none';
         }, 300);
     }
 }
 
-});

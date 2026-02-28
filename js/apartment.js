@@ -299,21 +299,32 @@ function initFAQ() {
 // Complaint Form Submission
 function initComplaintForm() {
     const complaintForm = document.getElementById('complaintForm');
-    
+
     if (complaintForm) {
-        complaintForm.addEventListener('submit', (e) => {
+        complaintForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
+
             const formData = new FormData(complaintForm);
             const data = Object.fromEntries(formData);
-            
-            console.log('Complaint Data:', data);
-            
-            alert('Your complaint has been submitted successfully. We will respond within 24 hours.');
-            
-            complaintForm.reset();
-            
-            // In production, send to backend
+
+            try {
+                const response = await fetch('http://localhost:3000/api/complaints', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert('Your complaint has been submitted successfully. We will respond within 24 hours.');
+                    complaintForm.reset();
+                } else {
+                    alert('Something went wrong. Please try again.');
+                }
+            } catch (error) {
+                alert('Could not connect to server. Please try again later.');
+            }
         });
     }
 }

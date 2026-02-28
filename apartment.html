@@ -598,7 +598,7 @@
                         <input type="text" name="location" placeholder="Apartment Location">
                     </div>
                     <div class="form-group">
-                        <select required>
+                        <select name="category" required>
                             <option value="">Complaint Category</option>
                             <option value="Maintenance">Maintenance Issue</option>
                             <option value="Payment">Payment Query</option>
@@ -608,7 +608,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Describe your complaint..." rows="5" required></textarea>
+                        <textarea name="complaint" placeholder="Describe your complaint..." rows="5" required></textarea>
                     </div>
                     <button type="submit" class="submit-button">
                         <i class="fas fa-paper-plane"></i> Submit Complaint

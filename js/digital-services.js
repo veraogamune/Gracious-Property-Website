@@ -87,9 +87,34 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // All good — show success popup and reset form
-        showSuccessPopup();
-        bookingForm.reset();
+        // All good — send to backend
+        const formData = {
+            fullName: fullName,
+            email: email,
+            phone: phone,
+            service: service,
+            date: bookingForm.querySelector('input[name="date"]').value,
+            time: bookingForm.querySelector('input[name="time"]').value,
+            details: bookingForm.querySelector('textarea[name="details"]').value.trim()
+        };
+
+        fetch('http://localhost:3000/api/digital-bookings', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.success) {
+                showSuccessPopup();
+                bookingForm.reset();
+            } else {
+                showFormError('Something went wrong. Please try again.');
+            }
+        })
+        .catch(error => {
+            showFormError('Could not connect to server. Please try again later.');
+        });
     });
 
 

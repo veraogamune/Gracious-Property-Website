@@ -24,7 +24,8 @@ router.post('/', async (req, res) => {
         await newComplaint.save();
 
         res.status(200).json({ success: true, message: 'Complaint submitted successfully!' });
-    } catch (error) {
+   } catch (error) {
+        console.log('Complaint Error:', error);
         res.status(500).json({ success: false, message: 'Something went wrong. Please try again.' });
     }
 });

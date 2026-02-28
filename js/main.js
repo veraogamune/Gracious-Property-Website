@@ -105,21 +105,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // Newsletter form
+   // Newsletter form
     const newsletterForm = document.querySelector('.newsletter-form');
     if (newsletterForm) {
         const submitButton = newsletterForm.querySelector('button');
-        const emailInput = newsletterForm.querySelector('input');
+        const emailInput = newsletterForm.querySelector('input[name="email"]');
         
-        submitButton.addEventListener('click', (e) => {
+        submitButton.addEventListener('click', async (e) => {
             e.preventDefault();
-            const email = emailInput.value;
+            const email = emailInput.value.trim();
             
-            if (email && email.includes('@')) {
-                alert('Thank you for subscribing! We\'ll send updates to ' + email);
-                emailInput.value = '';
-            } else {
+            if (!email || !email.includes('@')) {
                 alert('Please enter a valid email address');
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:3000/api/newsletter', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert('Thank you for subscribing!');
+                    emailInput.value = '';
+                } else {
+                    alert(result.message);
+                }
+            } catch (error) {
+                alert('Could not connect to server. Please try again later.');
             }
         });
     }

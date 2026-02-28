@@ -16,6 +16,9 @@ app.use(express.static('./'));
 const contactRoute = require('./routes/contact');
 app.use('/api/contact', contactRoute);
 
+const newsletterRoute = require('./routes/newsletter');
+app.use('/api/newsletter', newsletterRoute);
+
 // Test route
 app.get('/', (req, res) => {
     res.send('Gracious Property Server is Running!');

@@ -122,45 +122,41 @@ function initBookingForm() {
     }
     
     // Form submission
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    if (!validateCurrentStep(5)) 
-        return;
-    
-    
-    // Get form data
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData);
-    
-    console.log('Booking Data:', data);
-    
-    // Show success popup
-    showSuccessPopup();
-    
-    // Reset form after delay
-    setTimeout(() => {
-        form.reset();
-        goToStep(1);
-    }, 3000);
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-    
-    // TODO: Send to backend when ready
-    // fetch('/api/apartment-bookings', {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify(data)
-    // })
-    // .then(response => response.json())
-    // .then(result => {
-    //     if (result.success) {
-    //         showSuccessPopup();
-    //     }
-    // })
-    // .catch(error => {
-    //     alert('An error occurred. Please try again.');
-    // });
-});
+        if (!validateCurrentStep(5)) return;
+
+        // Use FormData to handle file uploads too
+        const formData = new FormData(form);
+
+        // Add file uploads manually
+        const idFile = document.getElementById('idUpload').files[0];
+        const photoFile = document.getElementById('photoUpload').files[0];
+        if (idFile) formData.append('idUpload', idFile);
+        if (photoFile) formData.append('photoUpload', photoFile);
+
+        try {
+            const response = await fetch('http://localhost:3000/api/bookings', {
+                method: 'POST',
+                body: formData // Don't set Content-Type, browser handles it for FormData
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                showSuccessPopup();
+                setTimeout(() => {
+                    form.reset();
+                    goToStep(1);
+                }, 3000);
+            } else {
+                alert('Something went wrong. Please try again.');
+            }
+        } catch (error) {
+            alert('Could not connect to server. Please try again later.');
+        }
+    });
 }
 
 // Occupation Conditional Fields
@@ -302,7 +298,7 @@ function initFAQ() {
 
 // Complaint Form Submission
 function initComplaintForm() {
-    const complaintForm = document.querySelector('.complaint-form');
+    const complaintForm = document.getElementById('complaintForm');
     
     if (complaintForm) {
         complaintForm.addEventListener('submit', (e) => {

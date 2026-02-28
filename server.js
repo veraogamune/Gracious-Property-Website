@@ -14,10 +14,14 @@ app.use(express.static('./'));
 
 // Routes
 const contactRoute = require('./routes/contact');
-app.use('/api/contact', contactRoute);
-
 const newsletterRoute = require('./routes/newsletter');
+const bookingsRoute = require('./routes/bookings');
+const complaintsRoute = require('./routes/complaints');
+
+app.use('/api/contact', contactRoute);
 app.use('/api/newsletter', newsletterRoute);
+app.use('/api/bookings', bookingsRoute);
+app.use('/api/complaints', complaintsRoute);
 
 // Test route
 app.get('/', (req, res) => {

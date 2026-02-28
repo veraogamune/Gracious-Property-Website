@@ -75,25 +75,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // Contact form submission
+   // Contact form submission
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
             const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData);
             
-            // Placeholder for actual form submission
-            alert('Thank you for reaching out! We will get back to you soon.');
-            contactForm.reset();
-            
-            // In production, you would send this data to your backend:
-            // fetch('/api/contact', {
-            //     method: 'POST',
-            //     headers: { 'Content-Type': 'application/json' },
-            //     body: JSON.stringify(data)
-            // });
+            try {
+                const response = await fetch('http://localhost:3000/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    alert('Message sent successfully! We will get back to you soon.');
+                    contactForm.reset();
+                } else {
+                    alert('Something went wrong. Please try again.');
+                }
+            } catch (error) {
+                alert('Could not connect to server. Please try again later.');
+            }
         });
     }
     

@@ -1,0 +1,12 @@
+# Environment variables — keep this secret!
+.env
+
+# Node modules — no need to push these to GitHub
+node_modules/
+
+# Uploaded files
+uploads/
+
+# OS files
+.DS_Store
+Thumbs.db

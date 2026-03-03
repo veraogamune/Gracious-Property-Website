@@ -3,10 +3,9 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-// Admin credentials — change these to your own!
-const ADMIN_USERNAME = 'admin';
-const ADMIN_PASSWORD_HASH = bcrypt.hashSync('gracious2026', 10);
-const JWT_SECRET = 'gracious-property-secret-key';
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME;
+const ADMIN_PASSWORD_HASH = bcrypt.hashSync(process.env.ADMIN_PASSWORD, 10);
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // Middleware to verify token
 function verifyToken(req, res, next) {

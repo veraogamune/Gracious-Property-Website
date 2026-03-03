@@ -20,6 +20,7 @@ const complaintsRoute = require('./routes/complaints');
 const digitalBookingsRoute = require('./routes/digital-bookings');
 const enrollmentsRoute = require('./routes/enrollments');
 const { router: adminRoute } = require('./routes/admin');
+const { router: usersRoute } = require('./routes/users');
 
 app.use('/api/contact', contactRoute);
 app.use('/api/newsletter', newsletterRoute);
@@ -28,6 +29,7 @@ app.use('/api/complaints', complaintsRoute);
 app.use('/api/digital-bookings', digitalBookingsRoute);
 app.use('/api/enrollments', enrollmentsRoute);
 app.use('/api/admin', adminRoute);
+app.use('/api/users', usersRoute);
 
 // Test route
 app.get('/', (req, res) => {

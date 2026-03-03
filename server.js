@@ -17,15 +17,17 @@ const contactRoute = require('./routes/contact');
 const newsletterRoute = require('./routes/newsletter');
 const bookingsRoute = require('./routes/bookings');
 const complaintsRoute = require('./routes/complaints');
-const enrollmentsRoute = require('./routes/enrollments');
 const digitalBookingsRoute = require('./routes/digital-bookings');
+const enrollmentsRoute = require('./routes/enrollments');
+const { router: adminRoute } = require('./routes/admin');
 
 app.use('/api/contact', contactRoute);
 app.use('/api/newsletter', newsletterRoute);
 app.use('/api/bookings', bookingsRoute);
 app.use('/api/complaints', complaintsRoute);
-app.use('/api/enrollments', enrollmentsRoute);
 app.use('/api/digital-bookings', digitalBookingsRoute);
+app.use('/api/enrollments', enrollmentsRoute);
+app.use('/api/admin', adminRoute);
 
 // Test route
 app.get('/', (req, res) => {

@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard — Gracious Property</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0a0f1a;
+            --surface: #111827;
+            --surface2: #1a2235;
+            --border: #1e2d45;
+            --accent: #2563eb;
+            --accent2: #3b82f6;
+            --green: #10b981;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+            --text: #f1f5f9;
+            --muted: #64748b;
+            --font: 'DM Sans', sans-serif;
+            --mono: 'DM Mono', monospace;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* ===== LOGIN PAGE ===== */
+        #loginPage {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(ellipse at 20% 50%, #1a2235 0%, #0a0f1a 60%);
+        }
+
+        .login-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+        }
+
+        .login-logo {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-logo .icon {
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+        }
+
+        .login-logo h1 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .login-logo p {
+            color: var(--muted);
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+        }
+
+        .login-box .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .login-box label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .login-box input {
+            width: 100%;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 0.85rem 1rem;
+            color: var(--text);
+            font-family: var(--font);
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .login-box input:focus { border-color: var(--accent2); }
+
+        .login-btn {
+            width: 100%;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 0.9rem;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: var(--font);
+            cursor: pointer;
+            margin-top: 0.5rem;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .login-btn:hover { background: var(--accent2); transform: translateY(-1px); }
+
+        .login-error {
+            color: var(--red);
+            font-size: 0.85rem;
+            text-align: center;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        /* ===== DASHBOARD ===== */
+        #dashboard { display: none; }
+
+        .topbar {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .topbar-left h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .topbar-left span {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logout-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-family: var(--font);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .logout-btn:hover { border-color: var(--red); color: var(--red); }
+
+        .main-content { padding: 2rem; }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .stat-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .stat-card h3 { font-size: 1.5rem; font-weight: 700; }
+        .stat-card p { font-size: 0.75rem; color: var(--muted); margin-top: 0.1rem; }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--muted);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-family: var(--font);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* Table */
+        .table-container {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .table-header {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .table-header h3 { font-size: 1rem; font-weight: 600; }
+        .table-header span { font-size: 0.8rem; color: var(--muted); }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        thead th {
+            background: var(--surface2);
+            padding: 0.8rem 1rem;
+            text-align: left;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid var(--border);
+            transition: background 0.15s;
+        }
+
+        tbody tr:last-child { border-bottom: none; }
+        tbody tr:hover { background: var(--surface2); }
+
+        tbody td {
+            padding: 0.9rem 1rem;
+            vertical-align: middle;
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* Status Badge */
+        .badge {
+            padding: 0.25rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .badge-pending { background: rgba(245,158,11,0.15); color: var(--yellow); }
+        .badge-approved { background: rgba(16,185,129,0.15); color: var(--green); }
+        .badge-rejected { background: rgba(239,68,68,0.15); color: var(--red); }
+        .badge-open { background: rgba(239,68,68,0.15); color: var(--red); }
+        .badge-resolved { background: rgba(16,185,129,0.15); color: var(--green); }
+
+        /* Action Buttons */
+        .action-btns { display: flex; gap: 0.4rem; }
+
+        .action-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            transition: all 0.2s;
+        }
+
+        .action-btn:hover { background: var(--surface2); color: var(--text); }
+        .action-btn.delete:hover { border-color: var(--red); color: var(--red); }
+        .action-btn.email:hover { border-color: var(--accent2); color: var(--accent2); }
+        .action-btn.approve:hover { border-color: var(--green); color: var(--green); }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal-overlay.show { display: flex; }
+
+        .modal {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 550px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .modal-field {
+            margin-bottom: 1rem;
+        }
+
+        .modal-field label {
+            font-size: 0.75rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .modal-field p {
+            font-size: 0.9rem;
+            color: var(--text);
+            background: var(--bg);
+            padding: 0.6rem 0.8rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .modal-btn {
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            border: none;
+            font-family: var(--font);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .modal-btn.approve { background: var(--green); color: white; }
+        .modal-btn.reject { background: var(--red); color: white; }
+        .modal-btn.pending { background: var(--yellow); color: #000; }
+        .modal-btn.resolve { background: var(--green); color: white; }
+        .modal-btn.email { background: var(--accent); color: white; }
+        .modal-btn.delete { background: var(--red); color: white; }
+        .modal-btn.close { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
+
+        /* Email Modal */
+        .email-modal textarea {
+            width: 100%;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.8rem;
+            color: var(--text);
+            font-family: var(--font);
+            font-size: 0.9rem;
+            resize: vertical;
+            outline: none;
+            margin-top: 0.5rem;
+        }
+
+        .email-modal input {
+            width: 100%;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.7rem 0.8rem;
+            color: var(--text);
+            font-family: var(--font);
+            font-size: 0.9rem;
+            outline: none;
+            margin-top: 0.5rem;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--muted);
+        }
+
+        .empty-state i { font-size: 2rem; margin-bottom: 0.8rem; display: block; }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: var(--muted);
+        }
+
+        select.status-select {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.4rem 0.6rem;
+            border-radius: 6px;
+            font-family: var(--font);
+            font-size: 0.8rem;
+            outline: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<!-- LOGIN PAGE -->
+<div id="loginPage">
+    <div class="login-box">
+        <div class="login-logo">
+            <div class="icon"><i class="fas fa-shield-alt"></i></div>
+            <h1>Gracious Property</h1>
+            <p>Admin Dashboard — Secure Access</p>
+        </div>
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" id="loginUsername" placeholder="Enter username">
+        </div>
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" id="loginPassword" placeholder="Enter password">
+        </div>
+        <button class="login-btn" onclick="handleLogin()">
+            <i class="fas fa-sign-in-alt"></i> Sign In
+        </button>
+        <p class="login-error" id="loginError">Invalid username or password.</p>
+    </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+    <div class="topbar">
+        <div class="topbar-left">
+            <h2>🏠 Gracious Property — Admin</h2>
+            <span id="currentDate"></span>
+        </div>
+        <div class="topbar-right">
+            <button class="logout-btn" onclick="handleLogout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <!-- Stats -->
+        <div class="stats-grid" id="statsGrid">
+            <div class="stat-card">
+                <div class="stat-icon" style="background:rgba(37,99,235,0.15);color:#3b82f6"><i class="fas fa-envelope"></i></div>
+                <div><h3 id="statContacts">0</h3><p>Contacts</p></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background:rgba(16,185,129,0.15);color:#10b981"><i class="fas fa-newspaper"></i></div>
+                <div><h3 id="statNewsletters">0</h3><p>Subscribers</p></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background:rgba(245,158,11,0.15);color:#f59e0b"><i class="fas fa-home"></i></div>
+                <div><h3 id="statBookings">0</h3><p>Apt. Bookings</p></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background:rgba(139,92,246,0.15);color:#8b5cf6"><i class="fas fa-laptop"></i></div>
+                <div><h3 id="statDigital">0</h3><p>Digital Bookings</p></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background:rgba(236,72,153,0.15);color:#ec4899"><i class="fas fa-graduation-cap"></i></div>
+                <div><h3 id="statEnrollments">0</h3><p>Enrollments</p></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background:rgba(239,68,68,0.15);color:#ef4444"><i class="fas fa-exclamation-circle"></i></div>
+                <div><h3 id="statComplaints">0</h3><p>Complaints</p></div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('contacts')"><i class="fas fa-envelope"></i> Contacts</button>
+            <button class="tab-btn" onclick="switchTab('newsletters')"><i class="fas fa-newspaper"></i> Newsletters</button>
+            <button class="tab-btn" onclick="switchTab('bookings')"><i class="fas fa-home"></i> Apt. Bookings</button>
+            <button class="tab-btn" onclick="switchTab('digitalBookings')"><i class="fas fa-laptop"></i> Digital Bookings</button>
+            <button class="tab-btn" onclick="switchTab('enrollments')"><i class="fas fa-graduation-cap"></i> Enrollments</button>
+            <button class="tab-btn" onclick="switchTab('complaints')"><i class="fas fa-exclamation-circle"></i> Complaints</button>
+        </div>
+
+        <!-- Contacts Tab -->
+        <div class="tab-content active" id="tab-contacts">
+            <div class="table-container">
+                <div class="table-header">
+                    <h3>Contact Messages</h3>
+                    <span id="contacts-count">0 entries</span>
+                </div>
+                <div style="overflow-x:auto">
+                    <table>
+                        <thead><tr>
+                            <th>Name</th><th>Email</th><th>Phone</th><th>Service</th><th>Message</th><th>Date</th><th>Actions</th>
+                        </tr></thead>
+                        <tbody id="contacts-body"><tr><td colspan="7" class="loading">Loading...</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Newsletters Tab -->
+        <div class="tab-content" id="tab-newsletters">
+            <div class="table-container">
+                <div class="table-header">
+                    <h3>Newsletter Subscribers</h3>
+                    <span id="newsletters-count">0 entries</span>
+                </div>
+                <div style="overflow-x:auto">
+                    <table>
+                        <thead><tr>
+                            <th>Email</th><th>Subscribed Date</th><th>Actions</th>
+                        </tr></thead>
+                        <tbody id="newsletters-body"><tr><td colspan="3" class="loading">Loading...</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Apartment Bookings Tab -->
+        <div class="tab-content" id="tab-bookings">
+            <div class="table-container">
+                <div class="table-header">
+                    <h3>Apartment Bookings</h3>
+                    <span id="bookings-count">0 entries</span>
+                </div>
+                <div style="overflow-x:auto">
+                    <table>
+                        <thead><tr>
+                            <th>Name</th><th>Email</th><th>Phone</th><th>Location</th><th>Room Type</th><th>Status</th><th>Date</th><th>Actions</th>
+                        </tr></thead>
+                        <tbody id="bookings-body"><tr><td colspan="8" class="loading">Loading...</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Digital Bookings Tab -->
+        <div class="tab-content" id="tab-digitalBookings">
+            <div class="table-container">
+                <div class="table-header">
+                    <h3>Digital Service Bookings</h3>
+                    <span id="digitalBookings-count">0 entries</span>
+                </div>
+                <div style="overflow-x:auto">
+                    <table>
+                        <thead><tr>
+                            <th>Name</th><th>Email</th><th>Phone</th><th>Service</th><th>Date</th><th>Status</th><th>Actions</th>
+                        </tr></thead>
+                        <tbody id="digitalBookings-body"><tr><td colspan="7" class="loading">Loading...</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enrollments Tab -->
+        <div class="tab-content" id="tab-enrollments">
+            <div class="table-container">
+                <div class="table-header">
+                    <h3>Course Enrollments</h3>
+                    <span id="enrollments-count">0 entries</span>
+                </div>
+                <div style="overflow-x:auto">
+                    <table>
+                        <thead><tr>
+                            <th>Name</th><th>Email</th><th>Course</th><th>Schedule</th><th>Mode</th><th>Status</th><th>Actions</th>
+                        </tr></thead>
+                        <tbody id="enrollments-body"><tr><td colspan="7" class="loading">Loading...</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Complaints Tab -->
+        <div class="tab-content" id="tab-complaints">
+            <div class="table-container">
+                <div class="table-header">
+                    <h3>Complaints</h3>
+                    <span id="complaints-count">0 entries</span>
+                </div>
+                <div style="overflow-x:auto">
+                    <table>
+                        <thead><tr>
+                            <th>Name</th><th>Email</th><th>Location</th><th>Category</th><th>Complaint</th><th>Status</th><th>Actions</th>
+                        </tr></thead>
+                        <tbody id="complaints-body"><tr><td colspan="7" class="loading">Loading...</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Detail Modal -->
+<div class="modal-overlay" id="detailModal">
+    <div class="modal">
+        <h3 id="modalTitle">Entry Details</h3>
+        <div id="modalBody"></div>
+        <div class="modal-actions" id="modalActions"></div>
+    </div>
+</div>
+
+<!-- Email Modal -->
+<div class="modal-overlay" id="emailModal">
+    <div class="modal email-modal">
+        <h3>Reply via Email</h3>
+        <div class="modal-field">
+            <label>To</label>
+            <input type="email" id="emailTo" readonly>
+        </div>
+        <div class="modal-field">
+            <label>Subject</label>
+            <input type="text" id="emailSubject">
+        </div>
+        <div class="modal-field">
+            <label>Message</label>
+            <textarea id="emailBody" rows="6"></textarea>
+        </div>
+        <div class="modal-actions">
+            <button class="modal-btn email" onclick="sendEmail()"><i class="fas fa-paper-plane"></i> Send Email</button>
+            <button class="modal-btn close" onclick="closeModal('emailModal')">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let token = localStorage.getItem('adminToken');
+    let allData = {};
+    let currentEntry = null;
+    let currentCollection = null;
+
+    // Show dashboard if already logged in
+    if (token) showDashboard();
+
+    document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-NG', {
+        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    });
+
+    // Allow Enter key on login
+    document.getElementById('loginPassword').addEventListener('keypress', e => {
+        if (e.key === 'Enter') handleLogin();
+    });
+
+    async function handleLogin() {
+        const username = document.getElementById('loginUsername').value.trim();
+        const password = document.getElementById('loginPassword').value.trim();
+
+        try {
+            const res = await fetch('http://localhost:3000/api/admin/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+
+            const result = await res.json();
+
+            if (result.success) {
+                token = result.token;
+                localStorage.setItem('adminToken', token);
+                showDashboard();
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+        } catch (err) {
+            document.getElementById('loginError').textContent = 'Could not connect to server.';
+            document.getElementById('loginError').style.display = 'block';
+        }
+    }
+
+    function showDashboard() {
+        document.getElementById('loginPage').style.display = 'none';
+        document.getElementById('dashboard').style.display = 'block';
+        loadData();
+    }
+
+    function handleLogout() {
+        localStorage.removeItem('adminToken');
+        token = null;
+        document.getElementById('loginPage').style.display = 'flex';
+        document.getElementById('dashboard').style.display = 'none';
+    }
+
+    async function loadData() {
+        try {
+            const res = await fetch('http://localhost:3000/api/admin/data', {
+                headers: { 'Authorization': token }
+            });
+
+            if (res.status === 401) { handleLogout(); return; }
+
+            const result = await res.json();
+            allData = result;
+
+            // Update stats
+            document.getElementById('statContacts').textContent = result.contacts.length;
+            document.getElementById('statNewsletters').textContent = result.newsletters.length;
+            document.getElementById('statBookings').textContent = result.bookings.length;
+            document.getElementById('statDigital').textContent = result.digitalBookings.length;
+            document.getElementById('statEnrollments').textContent = result.enrollments.length;
+            document.getElementById('statComplaints').textContent = result.complaints.length;
+
+            // Render tables
+            renderContacts(result.contacts);
+            renderNewsletters(result.newsletters);
+            renderBookings(result.bookings);
+            renderDigitalBookings(result.digitalBookings);
+            renderEnrollments(result.enrollments);
+            renderComplaints(result.complaints);
+
+        } catch (err) {
+            console.error('Error loading data:', err);
+        }
+    }
+
+    function formatDate(dateStr) {
+        if (!dateStr) return '-';
+        return new Date(dateStr).toLocaleDateString('en-NG', { day: 'numeric', month: 'short', year: 'numeric' });
+    }
+
+    function truncate(str, n = 40) {
+        if (!str) return '-';
+        return str.length > n ? str.substring(0, n) + '...' : str;
+    }
+
+    function statusBadge(status) {
+        const map = { Pending: 'pending', Approved: 'approved', Rejected: 'rejected', Open: 'open', Resolved: 'resolved' };
+        return `<span class="badge badge-${map[status] || 'pending'}">${status || 'Pending'}</span>`;
+    }
+
+    // ===== RENDER FUNCTIONS =====
+
+    function renderContacts(data) {
+        document.getElementById('contacts-count').textContent = `${data.length} entries`;
+        const tbody = document.getElementById('contacts-body');
+        if (!data.length) { tbody.innerHTML = '<tr><td colspan="7" class="empty-state"><i class="fas fa-inbox"></i>No contacts yet</td></tr>'; return; }
+        tbody.innerHTML = data.map(c => `
+            <tr>
+                <td>${c.fullName}</td>
+                <td>${c.email}</td>
+                <td>${c.phone}</td>
+                <td>${c.service}</td>
+                <td>${truncate(c.message)}</td>
+                <td>${formatDate(c.createdAt)}</td>
+                <td><div class="action-btns">
+                    <button class="action-btn" title="View" onclick='viewEntry(${JSON.stringify(c)}, "Contact")'><i class="fas fa-eye"></i></button>
+                    <button class="action-btn email" title="Reply" onclick='openEmail("${c.email}", "Re: Your Enquiry", "Dear ${c.fullName},\n\nThank you for contacting Gracious Property.\n\n")'><i class="fas fa-reply"></i></button>
+                    <button class="action-btn delete" title="Delete" onclick='deleteEntry("Contact", "${c._id}")'><i class="fas fa-trash"></i></button>
+                </div></td>
+            </tr>`).join('');
+    }
+
+    function renderNewsletters(data) {
+        document.getElementById('newsletters-count').textContent = `${data.length} entries`;
+        const tbody = document.getElementById('newsletters-body');
+        if (!data.length) { tbody.innerHTML = '<tr><td colspan="3" class="empty-state"><i class="fas fa-inbox"></i>No subscribers yet</td></tr>'; return; }
+        tbody.innerHTML = data.map(n => `
+            <tr>
+                <td>${n.email}</td>
+                <td>${formatDate(n.subscribedAt)}</td>
+                <td><div class="action-btns">
+                    <button class="action-btn email" title="Email" onclick='openEmail("${n.email}", "Gracious Property Newsletter", "Dear Subscriber,\n\n")'><i class="fas fa-envelope"></i></button>
+                    <button class="action-btn delete" title="Delete" onclick='deleteEntry("Newsletter", "${n._id}")'><i class="fas fa-trash"></i></button>
+                </div></td>
+            </tr>`).join('');
+    }
+
+    function renderBookings(data) {
+        document.getElementById('bookings-count').textContent = `${data.length} entries`;
+        const tbody = document.getElementById('bookings-body');
+        if (!data.length) { tbody.innerHTML = '<tr><td colspan="8" class="empty-state"><i class="fas fa-inbox"></i>No bookings yet</td></tr>'; return; }
+        tbody.innerHTML = data.map(b => `
+            <tr>
+                <td>${b.fullName}</td>
+                <td>${b.email}</td>
+                <td>${b.phone}</td>
+                <td>${b.location}</td>
+                <td>${truncate(b.roomType, 20)}</td>
+                <td>${statusBadge(b.status)}</td>
+                <td>${formatDate(b.createdAt)}</td>
+                <td><div class="action-btns">
+                    <button class="action-btn" title="View" onclick='viewEntry(${JSON.stringify(b)}, "Booking")'><i class="fas fa-eye"></i></button>
+                    <button class="action-btn email" title="Reply" onclick='openEmail("${b.email}", "Re: Your Apartment Booking", "Dear ${b.fullName},\n\nRegarding your apartment booking request...\n\n")'><i class="fas fa-reply"></i></button>
+                    <button class="action-btn delete" title="Delete" onclick='deleteEntry("Booking", "${b._id}")'><i class="fas fa-trash"></i></button>
+                </div></td>
+            </tr>`).join('');
+    }
+
+    function renderDigitalBookings(data) {
+        document.getElementById('digitalBookings-count').textContent = `${data.length} entries`;
+        const tbody = document.getElementById('digitalBookings-body');
+        if (!data.length) { tbody.innerHTML = '<tr><td colspan="7" class="empty-state"><i class="fas fa-inbox"></i>No bookings yet</td></tr>'; return; }
+        tbody.innerHTML = data.map(d => `
+            <tr>
+                <td>${d.fullName}</td>
+                <td>${d.email}</td>
+                <td>${d.phone}</td>
+                <td>${d.service}</td>
+                <td>${d.date || '-'}</td>
+                <td>${statusBadge(d.status)}</td>
+                <td><div class="action-btns">
+                    <button class="action-btn" title="View" onclick='viewEntry(${JSON.stringify(d)}, "DigitalBooking")'><i class="fas fa-eye"></i></button>
+                    <button class="action-btn email" title="Reply" onclick='openEmail("${d.email}", "Re: Your Service Booking", "Dear ${d.fullName},\n\nRegarding your ${d.service} booking...\n\n")'><i class="fas fa-reply"></i></button>
+                    <button class="action-btn delete" title="Delete" onclick='deleteEntry("DigitalBooking", "${d._id}")'><i class="fas fa-trash"></i></button>
+                </div></td>
+            </tr>`).join('');
+    }
+
+    function renderEnrollments(data) {
+        document.getElementById('enrollments-count').textContent = `${data.length} entries`;
+        const tbody = document.getElementById('enrollments-body');
+        if (!data.length) { tbody.innerHTML = '<tr><td colspan="7" class="empty-state"><i class="fas fa-inbox"></i>No enrollments yet</td></tr>'; return; }
+        tbody.innerHTML = data.map(e => `
+            <tr>
+                <td>${e.fullName}</td>
+                <td>${e.email}</td>
+                <td>${e.course}</td>
+                <td>${e.schedule}</td>
+                <td>${e.mode}</td>
+                <td>${statusBadge(e.status)}</td>
+                <td><div class="action-btns">
+                    <button class="action-btn" title="View" onclick='viewEntry(${JSON.stringify(e)}, "Enrollment")'><i class="fas fa-eye"></i></button>
+                    <button class="action-btn email" title="Reply" onclick='openEmail("${e.email}", "Re: Your Course Enrollment", "Dear ${e.fullName},\n\nRegarding your enrollment for ${e.course}...\n\n")'><i class="fas fa-reply"></i></button>
+                    <button class="action-btn delete" title="Delete" onclick='deleteEntry("Enrollment", "${e._id}")'><i class="fas fa-trash"></i></button>
+                </div></td>
+            </tr>`).join('');
+    }
+
+    function renderComplaints(data) {
+        document.getElementById('complaints-count').textContent = `${data.length} entries`;
+        const tbody = document.getElementById('complaints-body');
+        if (!data.length) { tbody.innerHTML = '<tr><td colspan="7" class="empty-state"><i class="fas fa-inbox"></i>No complaints yet</td></tr>'; return; }
+        tbody.innerHTML = data.map(c => `
+            <tr>
+                <td>${c.fullName}</td>
+                <td>${c.email}</td>
+                <td>${c.location || '-'}</td>
+                <td>${c.category}</td>
+                <td>${truncate(c.complaint)}</td>
+                <td>${statusBadge(c.status)}</td>
+                <td><div class="action-btns">
+                    <button class="action-btn" title="View" onclick='viewEntry(${JSON.stringify(c)}, "Complaint")'><i class="fas fa-eye"></i></button>
+                    <button class="action-btn email" title="Reply" onclick='openEmail("${c.email}", "Re: Your Complaint", "Dear ${c.fullName},\n\nRegarding your complaint about ${c.category}...\n\n")'><i class="fas fa-reply"></i></button>
+                    <button class="action-btn delete" title="Delete" onclick='deleteEntry("Complaint", "${c._id}")'><i class="fas fa-trash"></i></button>
+                </div></td>
+            </tr>`).join('');
+    }
+
+    // ===== TAB SWITCHING =====
+    function switchTab(tab) {
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(`tab-${tab}`).classList.add('active');
+        event.target.closest('.tab-btn').classList.add('active');
+    }
+
+    // ===== VIEW ENTRY MODAL =====
+    function viewEntry(entry, collection) {
+        currentEntry = entry;
+        currentCollection = collection;
+
+        document.getElementById('modalTitle').textContent = `${collection} Details`;
+
+        const skip = ['_id', '__v', 'idCardPath', 'photoPath'];
+        const labels = {
+            fullName: 'Full Name', email: 'Email', phone: 'Phone', service: 'Service',
+            message: 'Message', location: 'Location', roomType: 'Room Type', status: 'Status',
+            createdAt: 'Submitted On', course: 'Course', schedule: 'Schedule', mode: 'Mode',
+            experience: 'Experience', occupation: 'Occupation', reason: 'Reason',
+            category: 'Category', complaint: 'Complaint', sex: 'Sex', dob: 'Date of Birth',
+            stateOfOrigin: 'State of Origin', religion: 'Religion', address: 'Address',
+            emergencyName: 'Emergency Contact', emergencyPhone: 'Emergency Phone',
+            guarantorName1: 'Guarantor 1', guarantorPhone1: 'Guarantor 1 Phone',
+            guarantorName2: 'Guarantor 2', guarantorPhone2: 'Guarantor 2 Phone',
+            date: 'Preferred Date', time: 'Preferred Time', details: 'Details'
+        };
+
+        let html = '';
+        for (const [key, val] of Object.entries(entry)) {
+            if (skip.includes(key) || !val) continue;
+            const label = labels[key] || key;
+            const value = key === 'createdAt' ? formatDate(val) : val;
+            html += `<div class="modal-field"><label>${label}</label><p>${value}</p></div>`;
+        }
+
+        document.getElementById('modalBody').innerHTML = html;
+
+        // Action buttons
+        let actions = '';
+        if (['Booking', 'DigitalBooking', 'Enrollment'].includes(collection)) {
+            actions += `<button class="modal-btn approve" onclick="updateStatus('${collection}', '${entry._id}', 'Approved')">✅ Approve</button>`;
+            actions += `<button class="modal-btn reject" onclick="updateStatus('${collection}', '${entry._id}', 'Rejected')">❌ Reject</button>`;
+            actions += `<button class="modal-btn pending" onclick="updateStatus('${collection}', '${entry._id}', 'Pending')">⏳ Pending</button>`;
+        }
+        if (collection === 'Complaint') {
+            actions += `<button class="modal-btn resolve" onclick="updateStatus('Complaint', '${entry._id}', 'Resolved')">✅ Mark Resolved</button>`;
+            actions += `<button class="modal-btn reject" onclick="updateStatus('Complaint', '${entry._id}', 'Open')">🔴 Mark Open</button>`;
+        }
+        actions += `<button class="modal-btn close" onclick="closeModal('detailModal')">Close</button>`;
+        document.getElementById('modalActions').innerHTML = actions;
+
+        document.getElementById('detailModal').classList.add('show');
+    }
+
+    // ===== UPDATE STATUS =====
+    async function updateStatus(collection, id, status) {
+        try {
+            const res = await fetch('http://localhost:3000/api/admin/status', {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json', 'Authorization': token },
+                body: JSON.stringify({ collection, id, status })
+            });
+            const result = await res.json();
+            if (result.success) {
+                closeModal('detailModal');
+                loadData();
+            }
+        } catch (err) {
+            alert('Could not update status.');
+        }
+    }
+
+    // ===== DELETE ENTRY =====
+    async function deleteEntry(collection, id) {
+        if (!confirm('Are you sure you want to delete this entry?')) return;
+        try {
+            const res = await fetch('http://localhost:3000/api/admin/delete', {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json', 'Authorization': token },
+                body: JSON.stringify({ collection, id })
+            });
+            const result = await res.json();
+            if (result.success) loadData();
+        } catch (err) {
+            alert('Could not delete entry.');
+        }
+    }
+
+    // ===== EMAIL =====
+    function openEmail(to, subject, body) {
+        document.getElementById('emailTo').value = to;
+        document.getElementById('emailSubject').value = subject;
+        document.getElementById('emailBody').value = body;
+        document.getElementById('emailModal').classList.add('show');
+    }
+
+    function sendEmail() {
+        const to = document.getElementById('emailTo').value;
+        const subject = document.getElementById('emailSubject').value;
+        const body = document.getElementById('emailBody').value;
+        const mailtoLink = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailtoLink;
+        closeModal('emailModal');
+    }
+
+    function closeModal(id) {
+        document.getElementById(id).classList.remove('show');
+    }
+
+    // Close modal on outside click
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        overlay.addEventListener('click', e => {
+            if (e.target === overlay) overlay.classList.remove('show');
+        });
+    });
+</script>
+</body>
+</html>

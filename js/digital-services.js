@@ -202,13 +202,13 @@ function showFormError(message) {
 // -------------------------------------------------------
 function showSuccessPopup() {
     const overlay = document.getElementById('successOverlay');
-    overlay.style.display = 'flex';
-    document.body.style.overflow = 'hidden'; // Prevent background scroll
+    overlay.classList.add('show');
+    document.body.style.overflow = 'hidden';
 }
 
 function closeSuccessPopup() {
     const overlay = document.getElementById('successOverlay');
-    overlay.style.display = 'none';
+    overlay.classList.remove('show');
     document.body.style.overflow = '';
 }
 

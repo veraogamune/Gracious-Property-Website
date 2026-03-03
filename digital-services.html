@@ -389,7 +389,92 @@
         </div>
     </section>
 
-    
+    </section>
+
+    <!-- Course Enrollment Section -->
+    <section class="enrollment-section" id="enrollment">
+        <div class="container">
+            <div class="section-header centered">
+                <h2>Course Enrollment</h2>
+                <p>Fill out the form below to enroll in one of our training courses</p>
+            </div>
+
+            <div class="booking-form-container">
+                <form class="booking-form" id="enrollmentForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" name="fullName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input type="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phone Number *</label>
+                            <input type="tel" name="phone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Course *</label>
+                            <select name="course" id="courseSelect" required>
+                                <option value="">Select a Course</option>
+                                <option value="Web Development">Web Development - ₦25,000</option>
+                                <option value="Microsoft Office Suite">Microsoft Office Suite - ₦15,000</option>
+                                <option value="Data Analysis">Data Analysis - ₦20,000</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Preferred Schedule *</label>
+                            <select name="schedule" required>
+                                <option value="">Select Schedule</option>
+                                <option value="Weekdays Morning">Weekdays Morning</option>
+                                <option value="Weekdays Evening">Weekdays Evening</option>
+                                <option value="Weekends">Weekends</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Mode of Learning *</label>
+                            <select name="mode" required>
+                                <option value="">Select Mode</option>
+                                <option value="In-Person">In-Person</option>
+                                <option value="Online">Online</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Experience Level *</label>
+                            <select name="experience" required>
+                                <option value="">Select Level</option>
+                                <option value="Beginner">Beginner</option>
+                                <option value="Intermediate">Intermediate</option>
+                                <option value="Advanced">Advanced</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Occupation</label>
+                            <input type="text" name="occupation" placeholder="e.g. Student, Professional">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label>Why do you want to take this course?</label>
+                            <textarea name="reason" rows="4" placeholder="Tell us your motivation..."></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-graduation-cap"></i> Submit Enrollment
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- FAQ Section -->
     <section class="faq-section">
         <div class="container">

@@ -25,6 +25,47 @@ document.addEventListener('DOMContentLoaded', function () {
             // Scroll smoothly to the booking form
             document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
         });
+        // -------------------------------------------------------
+    // 6. ENROLLMENT FORM SUBMISSION
+    // -------------------------------------------------------
+    const enrollmentForm = document.getElementById('enrollmentForm');
+
+    if (enrollmentForm) {
+        enrollmentForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const formData = {
+                fullName: enrollmentForm.querySelector('input[name="fullName"]').value.trim(),
+                email: enrollmentForm.querySelector('input[name="email"]').value.trim(),
+                phone: enrollmentForm.querySelector('input[name="phone"]').value.trim(),
+                course: enrollmentForm.querySelector('select[name="course"]').value,
+                schedule: enrollmentForm.querySelector('select[name="schedule"]').value,
+                mode: enrollmentForm.querySelector('select[name="mode"]').value,
+                experience: enrollmentForm.querySelector('select[name="experience"]').value,
+                occupation: enrollmentForm.querySelector('input[name="occupation"]').value.trim(),
+                reason: enrollmentForm.querySelector('textarea[name="reason"]').value.trim()
+            };
+
+            try {
+                const response = await fetch('http://localhost:3000/api/enrollments', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showSuccessPopup();
+                    enrollmentForm.reset();
+                } else {
+                    showFormError('Something went wrong. Please try again.');
+                }
+            } catch (error) {
+                showFormError('Could not connect to server. Please try again later.');
+            }
+        });
+    }
     });
 
 
@@ -33,26 +74,24 @@ document.addEventListener('DOMContentLoaded', function () {
     // -------------------------------------------------------
     const enrollButtons = document.querySelectorAll('.enroll-btn');
 
-    enrollButtons.forEach(function (btn) {
+   enrollButtons.forEach(function (btn) {
         btn.addEventListener('click', function () {
-            // Set service dropdown to Computer Training
-            for (let i = 0; i < serviceSelect.options.length; i++) {
-                if (serviceSelect.options[i].value === 'Computer Training') {
-                    serviceSelect.selectedIndex = i;
+            // Get the course name from the parent card
+            const courseTitle = this.closest('.schedule-card').querySelector('h3').textContent;
+
+            // Pre-select the course in the enrollment form
+            const courseSelect = document.getElementById('courseSelect');
+            for (let i = 0; i < courseSelect.options.length; i++) {
+                if (courseSelect.options[i].value === courseTitle) {
+                    courseSelect.selectedIndex = i;
                     break;
                 }
             }
 
-            // Get the course name from the parent card and put it in details
-            const courseTitle = this.closest('.schedule-card').querySelector('h3').textContent;
-            const detailsField = document.querySelector('textarea[name="details"]');
-            detailsField.value = 'I would like to enroll in the ' + courseTitle + ' course.';
-
-            // Scroll to booking form
-            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+            // Scroll to enrollment form
+            document.getElementById('enrollment').scrollIntoView({ behavior: 'smooth' });
         });
     });
-
 
     // -------------------------------------------------------
     // 3. BOOKING FORM SUBMISSION — Validate & show success popup

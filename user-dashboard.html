@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard - Gracious Property</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .dashboard-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            min-height: calc(100vh - 80px);
+        }
+
+        .dashboard-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .dashboard-welcome h1 {
+            font-size: 2rem;
+            color: #f1f5f9;
+            font-weight: 700;
+        }
+
+        .dashboard-welcome h1 span {
+            background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .dashboard-welcome p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-top: 0.3rem;
+        }
+
+        .dashboard-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .dash-btn {
+            padding: 0.7rem 1.5rem;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .dash-btn.primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            color: white;
+            border: none;
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .dash-btn.secondary {
+            background: transparent;
+            color: #94a3b8;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .dash-btn:hover { transform: translateY(-2px); }
+
+        /* Stats */
+        .dash-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .dash-stat {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 20px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s;
+        }
+
+        .dash-stat:hover {
+            border-color: #3b82f6;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2);
+        }
+
+        .dash-stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .dash-stat h3 { font-size: 1.8rem; font-weight: 700; color: #f1f5f9; }
+        .dash-stat p { font-size: 0.8rem; color: #94a3b8; margin-top: 0.2rem; }
+
+        /* Tabs */
+        .dash-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .dash-tab {
+            padding: 0.7rem 1.4rem;
+            border-radius: 10px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            background: rgba(30, 41, 59, 0.5);
+            color: #94a3b8;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dash-tab.active, .dash-tab:hover {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            border-color: #3b82f6;
+            color: white;
+        }
+
+        .dash-tab-content { display: none; }
+        .dash-tab-content.active { display: block; }
+
+        /* Cards */
+        .booking-cards { display: flex; flex-direction: column; gap: 1.2rem; }
+
+        .booking-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 18px;
+            padding: 1.8rem;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 1rem;
+            align-items: start;
+            transition: all 0.3s;
+        }
+
+        .booking-card:hover {
+            border-color: #3b82f6;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+        }
+
+        .booking-card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 0.5rem;
+        }
+
+        .booking-card-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .booking-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+
+        .booking-detail i { color: #3b82f6; font-size: 0.8rem; }
+
+        .badge {
+            padding: 0.3rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .badge-pending { background: rgba(245,158,11,0.15); color: #f59e0b; }
+        .badge-approved { background: rgba(16,185,129,0.15); color: #10b981; }
+        .badge-rejected { background: rgba(239,68,68,0.15); color: #ef4444; }
+        .badge-cancelled { background: rgba(100,116,139,0.15); color: #64748b; }
+
+        .card-actions { display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-end; }
+
+        .cancel-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            background: transparent;
+            color: #ef4444;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cancel-btn:hover {
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #64748b;
+        }
+
+        .empty-state i { font-size: 3rem; margin-bottom: 1rem; display: block; color: #1e40af; }
+        .empty-state h3 { font-size: 1.2rem; color: #94a3b8; margin-bottom: 0.5rem; }
+        .empty-state p { font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+        /* Profile Section */
+        .profile-card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 25px;
+            padding: 2.5rem;
+            max-width: 600px;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        .profile-card h3 {
+            font-size: 1.3rem;
+            color: #f1f5f9;
+            margin-bottom: 0.3rem;
+        }
+
+        .profile-card .member-since {
+            color: #64748b;
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-form .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .profile-form label {
+            display: block;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .profile-form input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: rgba(15, 23, 42, 0.7);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .profile-form input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+        }
+
+        .profile-success {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #10b981;
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Gracious Property Logo">
+                <h2>Gracious Property</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="real-estate.html">Real Estate</a></li>
+                <li><a href="apartment.html">Next Level Apartment</a></li>
+                <li><a href="digital-services.html">Digital Services</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard -->
+    <section class="dashboard-section">
+        <div class="container">
+            <!-- Header -->
+            <div class="dashboard-header">
+                <div class="dashboard-welcome">
+                    <h1>Welcome back, <span id="userName">User</span>! 👋</h1>
+                    <p id="userEmail">Loading your account...</p>
+                </div>
+                <div class="dashboard-actions">
+                    <a href="apartment.html" class="dash-btn primary">
+                        <i class="fas fa-plus"></i> New Booking
+                    </a>
+                    <button class="dash-btn secondary" onclick="handleLogout()">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="dash-stats">
+                <div class="dash-stat">
+                    <div class="dash-stat-icon" style="background:rgba(37,99,235,0.15);color:#3b82f6">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div>
+                        <h3 id="statApt">0</h3>
+                        <p>Apt. Bookings</p>
+                    </div>
+                </div>
+                <div class="dash-stat">
+                    <div class="dash-stat-icon" style="background:rgba(139,92,246,0.15);color:#8b5cf6">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <div>
+                        <h3 id="statDigital">0</h3>
+                        <p>Digital Bookings</p>
+                    </div>
+                </div>
+                <div class="dash-stat">
+                    <div class="dash-stat-icon" style="background:rgba(236,72,153,0.15);color:#ec4899">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <h3 id="statEnroll">0</h3>
+                        <p>Enrollments</p>
+                    </div>
+                </div>
+                <div class="dash-stat">
+                    <div class="dash-stat-icon" style="background:rgba(16,185,129,0.15);color:#10b981">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div>
+                        <h3 id="statApproved">0</h3>
+                        <p>Approved</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="dash-tabs">
+                <button class="dash-tab active" onclick="switchDashTab('apartments')">
+                    <i class="fas fa-home"></i> Apartment Bookings
+                </button>
+                <button class="dash-tab" onclick="switchDashTab('digital')">
+                    <i class="fas fa-laptop"></i> Digital Bookings
+                </button>
+                <button class="dash-tab" onclick="switchDashTab('enrollments')">
+                    <i class="fas fa-graduation-cap"></i> Enrollments
+                </button>
+                <button class="dash-tab" onclick="switchDashTab('profile')">
+                    <i class="fas fa-user"></i> My Profile
+                </button>
+            </div>
+
+            <!-- Apartment Bookings Tab -->
+            <div class="dash-tab-content active" id="tab-apartments">
+                <div class="booking-cards" id="aptBookings">
+                    <div class="empty-state"><i class="fas fa-spinner fa-spin"></i><h3>Loading...</h3></div>
+                </div>
+            </div>
+
+            <!-- Digital Bookings Tab -->
+            <div class="dash-tab-content" id="tab-digital">
+                <div class="booking-cards" id="digitalBookings">
+                    <div class="empty-state"><i class="fas fa-spinner fa-spin"></i><h3>Loading...</h3></div>
+                </div>
+            </div>
+
+            <!-- Enrollments Tab -->
+            <div class="dash-tab-content" id="tab-enrollments">
+                <div class="booking-cards" id="enrollments">
+                    <div class="empty-state"><i class="fas fa-spinner fa-spin"></i><h3>Loading...</h3></div>
+                </div>
+            </div>
+
+            <!-- Profile Tab -->
+            <div class="dash-tab-content" id="tab-profile">
+                <div class="profile-card">
+                    <div class="profile-avatar"><i class="fas fa-user"></i></div>
+                    <h3 id="profileName">Loading...</h3>
+                    <p class="member-since">Gracious Property Member</p>
+
+                    <div class="profile-success" id="profileSuccess">Profile updated successfully!</div>
+
+                    <div class="profile-form">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="profileFullName" placeholder="Your full name">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" id="profileEmail" placeholder="Your email" readonly style="opacity:0.6">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" id="profilePhone" placeholder="Your phone number">
+                        </div>
+                        <div class="form-group">
+                            <label>New Password (leave blank to keep current)</label>
+                            <input type="password" id="profilePassword" placeholder="Enter new password">
+                        </div>
+                        <button class="submit-button" onclick="updateProfile()">
+                            <i class="fas fa-save"></i> Save Changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Gracious Property. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const token = localStorage.getItem('userToken');
+        const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+
+        // Redirect if not logged in
+        if (!token) {
+            window.location.href = 'auth.html';
+        }
+
+        // Set user info
+        document.getElementById('userName').textContent = userData.fullName || 'User';
+        document.getElementById('userEmail').textContent = userData.email || '';
+        document.getElementById('profileName').textContent = userData.fullName || '';
+        document.getElementById('profileFullName').value = userData.fullName || '';
+        document.getElementById('profileEmail').value = userData.email || '';
+        document.getElementById('profilePhone').value = userData.phone || '';
+
+        // Load bookings
+        loadBookings();
+
+        async function loadBookings() {
+            try {
+                const res = await fetch('http://localhost:3000/api/users/bookings', {
+                    headers: { 'Authorization': token }
+                });
+
+                if (res.status === 401) { handleLogout(); return; }
+
+                const result = await res.json();
+
+                if (result.success) {
+                    renderAptBookings(result.bookings);
+                    renderDigitalBookings(result.digitalBookings);
+                    renderEnrollments(result.enrollments);
+
+                    // Update stats
+                    document.getElementById('statApt').textContent = result.bookings.length;
+                    document.getElementById('statDigital').textContent = result.digitalBookings.length;
+                    document.getElementById('statEnroll').textContent = result.enrollments.length;
+
+                    const approved = [
+                        ...result.bookings,
+                        ...result.digitalBookings,
+                        ...result.enrollments
+                    ].filter(b => b.status === 'Approved').length;
+                    document.getElementById('statApproved').textContent = approved;
+                }
+            } catch (err) {
+                console.error('Error loading bookings:', err);
+            }
+        }
+
+        function formatDate(dateStr) {
+            if (!dateStr) return '-';
+            return new Date(dateStr).toLocaleDateString('en-NG', { day: 'numeric', month: 'short', year: 'numeric' });
+        }
+
+        function statusBadge(status) {
+            const map = { Pending: 'pending', Approved: 'approved', Rejected: 'rejected', Cancelled: 'cancelled' };
+            return `<span class="badge badge-${map[status] || 'pending'}">${status || 'Pending'}</span>`;
+        }
+
+        function renderAptBookings(data) {
+            const el = document.getElementById('aptBookings');
+            if (!data.length) {
+                el.innerHTML = `<div class="empty-state">
+                    <i class="fas fa-home"></i>
+                    <h3>No apartment bookings yet</h3>
+                    <p>Book one of our serviced apartments to get started</p>
+                    <a href="apartment.html" class="dash-btn primary" style="display:inline-flex;margin:0 auto">
+                        <i class="fas fa-plus"></i> Book Now
+                    </a>
+                </div>`;
+                return;
+            }
+
+            el.innerHTML = data.map(b => `
+                <div class="booking-card">
+                    <div>
+                        <div class="booking-card-title">🏠 ${b.location} — ${b.roomType}</div>
+                        <div class="booking-card-details">
+                            <span class="booking-detail"><i class="fas fa-calendar"></i> ${formatDate(b.createdAt)}</span>
+                            <span class="booking-detail"><i class="fas fa-phone"></i> ${b.phone}</span>
+                            <span class="booking-detail"><i class="fas fa-briefcase"></i> ${b.occupation}</span>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        ${statusBadge(b.status)}
+                        ${b.status === 'Pending' ? `<button class="cancel-btn" onclick="cancelBooking('Booking', '${b._id}')"><i class="fas fa-times"></i> Cancel</button>` : ''}
+                    </div>
+                </div>`).join('');
+        }
+
+        function renderDigitalBookings(data) {
+            const el = document.getElementById('digitalBookings');
+            if (!data.length) {
+                el.innerHTML = `<div class="empty-state">
+                    <i class="fas fa-laptop"></i>
+                    <h3>No digital service bookings yet</h3>
+                    <p>Book a printing, photography, or other digital service</p>
+                    <a href="digital-services.html" class="dash-btn primary" style="display:inline-flex;margin:0 auto">
+                        <i class="fas fa-plus"></i> Book a Service
+                    </a>
+                </div>`;
+                return;
+            }
+
+            el.innerHTML = data.map(d => `
+                <div class="booking-card">
+                    <div>
+                        <div class="booking-card-title">💻 ${d.service}</div>
+                        <div class="booking-card-details">
+                            <span class="booking-detail"><i class="fas fa-calendar"></i> ${d.date || formatDate(d.createdAt)}</span>
+                            <span class="booking-detail"><i class="fas fa-clock"></i> ${d.time || 'Time not specified'}</span>
+                            ${d.details ? `<span class="booking-detail"><i class="fas fa-info-circle"></i> ${d.details.substring(0, 50)}...</span>` : ''}
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        ${statusBadge(d.status)}
+                        ${d.status === 'Pending' ? `<button class="cancel-btn" onclick="cancelBooking('DigitalBooking', '${d._id}')"><i class="fas fa-times"></i> Cancel</button>` : ''}
+                    </div>
+                </div>`).join('');
+        }
+
+        function renderEnrollments(data) {
+            const el = document.getElementById('enrollments');
+            if (!data.length) {
+                el.innerHTML = `<div class="empty-state">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>No course enrollments yet</h3>
+                    <p>Enroll in one of our computer training courses</p>
+                    <a href="digital-services.html#enrollment" class="dash-btn primary" style="display:inline-flex;margin:0 auto">
+                        <i class="fas fa-plus"></i> Enroll Now
+                    </a>
+                </div>`;
+                return;
+            }
+
+            el.innerHTML = data.map(e => `
+                <div class="booking-card">
+                    <div>
+                        <div class="booking-card-title">🎓 ${e.course}</div>
+                        <div class="booking-card-details">
+                            <span class="booking-detail"><i class="fas fa-calendar"></i> ${formatDate(e.createdAt)}</span>
+                            <span class="booking-detail"><i class="fas fa-clock"></i> ${e.schedule}</span>
+                            <span class="booking-detail"><i class="fas fa-laptop"></i> ${e.mode}</span>
+                            <span class="booking-detail"><i class="fas fa-signal"></i> ${e.experience}</span>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        ${statusBadge(e.status)}
+                        ${e.status === 'Pending' ? `<button class="cancel-btn" onclick="cancelBooking('Enrollment', '${e._id}')"><i class="fas fa-times"></i> Cancel</button>` : ''}
+                    </div>
+                </div>`).join('');
+        }
+
+        async function cancelBooking(collection, id) {
+            if (!confirm('Are you sure you want to cancel this booking?')) return;
+            try {
+                const res = await fetch(`http://localhost:3000/api/users/cancel/${id}`, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': token },
+                    body: JSON.stringify({ collection })
+                });
+                const result = await res.json();
+                if (result.success) loadBookings();
+            } catch (err) {
+                alert('Could not cancel booking. Please try again.');
+            }
+        }
+
+        async function updateProfile() {
+            const fullName = document.getElementById('profileFullName').value.trim();
+            const phone = document.getElementById('profilePhone').value.trim();
+            const password = document.getElementById('profilePassword').value.trim();
+
+            try {
+                const body = { fullName, phone };
+                if (password) body.password = password;
+
+                const res = await fetch('http://localhost:3000/api/users/profile', {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': token },
+                    body: JSON.stringify(body)
+                });
+
+                const result = await res.json();
+                if (result.success) {
+                    const updated = { ...userData, fullName: result.user.fullName, phone: result.user.phone };
+                    localStorage.setItem('userData', JSON.stringify(updated));
+                    document.getElementById('userName').textContent = result.user.fullName;
+                    document.getElementById('profileName').textContent = result.user.fullName;
+                    document.getElementById('profilePassword').value = '';
+                    document.getElementById('profileSuccess').style.display = 'block';
+                    setTimeout(() => document.getElementById('profileSuccess').style.display = 'none', 3000);
+                }
+            } catch (err) {
+                alert('Could not update profile. Please try again.');
+            }
+        }
+
+        function switchDashTab(tab) {
+            document.querySelectorAll('.dash-tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.dash-tab').forEach(b => b.classList.remove('active'));
+            document.getElementById(`tab-${tab}`).classList.add('active');
+            event.target.closest('.dash-tab').classList.add('active');
+        }
+
+        function handleLogout() {
+            localStorage.removeItem('userToken');
+            localStorage.removeItem('userData');
+            window.location.href = 'auth.html';
+        }
+    </script>
+</body>
+</html>

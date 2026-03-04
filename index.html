@@ -10,27 +10,32 @@
 </head>
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <img src="images/logo.png" alt="Gracious Property Logo">
-                <h2>Gracious Property</h2>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="real-estate.html">Real Estate</a></li>
-                <li><a href="apartment.html">Next Level Apartment</a></li>
-                <li><a href="digital-services.html">Digital Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+<nav class="navbar">
+    <div class="container">
+        <div class="logo">
+            <img src="images/logo.png" alt="Gracious Property Logo">
+            <h2>Gracious Property</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="real-estate.html">Real Estate</a></li>
+            <li><a href="apartment.html">Next Level Apartment</a></li>
+            <li><a href="digital-services.html">Digital Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="navbar-right">
+            <a href="auth.html" class="my-account-btn">
+                <i class="fas fa-user"></i> My Account
+            </a>
             <div class="social-icons">
                 <a href="#"><i class="fab fa-facebook"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-linkedin"></i></a>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -529,5 +534,16 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script>
+    // Smart navbar — show Dashboard if logged in
+    const userToken = localStorage.getItem('userToken');
+    const userDataNav = JSON.parse(localStorage.getItem('userData') || '{}');
+    const accountBtn = document.querySelector('.my-account-btn');
+
+    if (accountBtn && userToken) {
+        accountBtn.href = 'user-dashboard.html';
+        accountBtn.innerHTML = '<i class="fas fa-user-circle"></i> ' + (userDataNav.fullName ? userDataNav.fullName.split(' ')[0] : 'Dashboard');
+    }
+</script>
 </body>
 </html>

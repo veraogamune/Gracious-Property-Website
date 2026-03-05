@@ -3,6 +3,12 @@
 // =============================================
 
 document.addEventListener('DOMContentLoaded', function () {
+    // Check if user is logged in
+    const userToken = localStorage.getItem('userToken');
+    if (!userToken) {
+        window.location.href = 'auth.html?redirect=digital';
+        return;
+    }
 
     // -------------------------------------------------------
     // 1. BOOK NOW BUTTONS — Pre-select service & scroll to form

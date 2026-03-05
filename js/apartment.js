@@ -1,6 +1,12 @@
 // Apartments Page JavaScript
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Check if user is logged in
+    const userToken = localStorage.getItem('userToken');
+    if (!userToken) {
+        window.location.href = 'auth.html?redirect=apartment';
+        return;
+    }
     // Image Slideshow for Locations
     initLocationSlideshows();
     

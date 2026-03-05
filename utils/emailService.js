@@ -181,10 +181,53 @@ async function sendComplaintEmails(data) {
     );
 }
 
-module.exports = {
+// User registration confirmation
+async function sendRegistrationEmail(data) {
+    await sendEmail(
+        data.email,
+        '🎉 Welcome to Gracious Property!',
+        `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#0f172a;color:#e2e8f0;padding:2rem;border-radius:12px">
+            <h2 style="color:#3b82f6">Welcome, ${data.fullName}! 🎉</h2>
+            <p>Thank you for creating an account with Gracious Property. Your account has been successfully created!</p>
+            <br>
+            <div style="background:#1e293b;padding:1.5rem;border-radius:10px;border-left:4px solid #3b82f6">
+                <p><strong>Your Account Details:</strong></p>
+                <p>📧 Email: ${data.email}</p>
+                <p>📱 Phone: ${data.phone}</p>
+            </div>
+            <br>
+            <p>You can now:</p>
+            <ul style="color:#94a3b8;line-height:2">
+                <li>Book an apartment</li>
+                <li>Book digital services</li>
+                <li>Enroll in computer training courses</li>
+                <li>Track all your bookings in your dashboard</li>
+            </ul>
+            <br>
+            <p style="color:#94a3b8">If you did not create this account, please ignore this email.</p>
+            <br>
+            <p style="color:#94a3b8">Gracious Property Team</p>
+        </div>`
+    );
+
+    // Notify admin of new registration
+    await sendEmail(
+        process.env.ADMIN_EMAIL,
+        '👤 New User Registration — Gracious Property',
+        `<div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;background:#0f172a;color:#e2e8f0;padding:2rem;border-radius:12px">
+            <h2 style="color:#3b82f6">New User Registered</h2>
+            <p><strong>Name:</strong> ${data.fullName}</p>
+            <p><strong>Email:</strong> ${data.email}</p>
+            <p><strong>Phone:</strong> ${data.phone}</p>
+        </div>`
+    );
+}
+
+mmodule.exports = {
     sendContactEmails,
     sendBookingEmails,
     sendDigitalBookingEmails,
     sendEnrollmentEmails,
-    sendComplaintEmails
+    sendComplaintEmails,
+    sendRegistrationEmail
 };

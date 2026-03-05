@@ -84,6 +84,9 @@ router.post('/', upload.fields([
 
         await newBooking.save();
 
+        const { sendBookingEmails } = require('../utils/emailService');
+        await sendBookingEmails(data);
+
         res.status(200).json({ success: true, message: 'Booking request submitted successfully!' });
     } catch (error) {
         console.log(error);

@@ -29,6 +29,9 @@ router.post('/', async (req, res) => {
         });
         await newEnrollment.save();
 
+        const { sendEnrollmentEmails } = require('../utils/emailService');
+        await sendEnrollmentEmails({ fullName, email, phone, course, schedule, mode, experience });
+
         res.status(200).json({ success: true, message: 'Enrollment submitted successfully!' });
     } catch (error) {
         console.log(error);

@@ -25,6 +25,9 @@ router.post('/', async (req, res) => {
         const newBooking = new DigitalBooking({ fullName, email, phone, service, date, time, details });
         await newBooking.save();
 
+        const { sendDigitalBookingEmails } = require('../utils/emailService');
+        await sendDigitalBookingEmails({ fullName, email, phone, service, date, time, details });
+
         res.status(200).json({ success: true, message: 'Booking request submitted successfully!' });
     } catch (error) {
         console.log(error);

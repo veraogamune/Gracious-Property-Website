@@ -23,6 +23,9 @@ router.post('/', async (req, res) => {
         const newContact = new Contact({ fullName, email, phone, service, message });
         await newContact.save();
 
+        const { sendContactEmails } = require('../utils/emailService');
+        await sendContactEmails({ fullName, email, phone, service, message });
+
         res.status(200).json({ success: true, message: 'Message received successfully!' });
     } catch (error) {
         res.status(500).json({ success: false, message: 'Something went wrong. Please try again.' });

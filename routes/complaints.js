@@ -23,6 +23,9 @@ router.post('/', async (req, res) => {
         const newComplaint = new Complaint({ fullName, email, location, category, complaint });
         await newComplaint.save();
 
+        const { sendComplaintEmails } = require('../utils/emailService');
+        await sendComplaintEmails({ fullName, email, location, category, complaint });
+
         res.status(200).json({ success: true, message: 'Complaint submitted successfully!' });
    } catch (error) {
         console.log('Complaint Error:', error);

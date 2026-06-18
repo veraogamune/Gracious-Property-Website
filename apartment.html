@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Level Apartment - Gracious Property</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/apartment.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Gracious Property Logo">
+                <h2>Gracious Property</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="real-estate.html">Real Estate</a></li>
+                <li><a href="apartment.html" class="active">Next Level Apartment</a></li>
+                <li><a href="digital-services.html">Digital Services</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="navbar-right">
+            <a href="auth.html" class="my-account-btn">
+                <i class="fas fa-user"></i> My Account
+            </a>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="apartments-hero">
+        <div class="container">
+            <h1>Next Level Apartment</h1>
+            <p>Affordable Serviced Apartments for Young Professionals, Interns & NYSC Members</p>
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Fully Furnished</span>
+                </div>
+                <div class="hero-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>24/7 Security</span>
+                </div>
+                <div class="hero-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>All Utilities Included</span>
+                </div>
+                <div class="hero-feature">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Monthly Payment</span>
+                </div>
+            </div>
+            <a href="#booking" class="cta-button">Book Your Space Now</a>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section class="locations-section">
+        <div class="container">
+            <div class="section-header centered">
+                <h2>Our Locations</h2>
+                <p>We have apartments in strategic locations across Lagos</p>
+            </div>
+            
+            <div class="locations-grid">
+                <div class="location-card" data-location="Ketu">
+                    <div class="location-images">
+                        <img src="images/ketu-1.jpg" alt="Ketu apartment exterior">
+                        <img src="images/ketu-2.jpg" alt="Ketu common area">
+                        <img src="images/ketu-3.jpg" alt="Ketu bedroom">
+                    </div>
+                    <h3>Ketu</h3>
+                    <p class="location-address">29 Adebayo Street, Ketu, Lagos</p>
+                    <div class="location-info">
+                        <span><i class="fas fa-bed"></i> 32 Spaces Available</span>
+                        <span><i class="fas fa-door-open"></i> 4, 6, 8, 12 Bed Rooms</span>
+                    </div>
+                    <button class="select-location-btn" data-location="Ketu (29 Adebayo Street)">Select Location</button>
+                </div>
+
+                <div class="location-card" data-location="Ketu">
+                    <div class="location-images">
+                        <img src="images/ketu-1.jpg" alt="Ketu apartment exterior">
+                        <img src="images/ketu-2.jpg" alt="Ketu common area">
+                        <img src="images/ketu-3.jpg" alt="Ketu bedroom">
+                    </div>
+                    <h3>Ketu</h3>
+                     <p class="location-address">36 Adebayo Street, Ketu, Lagos</p>
+                    <div class="location-info">
+                        <span><i class="fas fa-bed"></i> 16 Spaces Available</span>
+                        <span><i class="fas fa-door-open"></i> 4, 6, 10 Bed Rooms</span>
+                    </div>
+                    <button class="select-location-btn" data-location="Ketu (36 Adebayo Street)">Select Location</button>
+                </div>
+
+                <div class="location-card" data-location="Ikeja">
+                    <div class="location-images">
+                        <img src="images/ikeja-1.jpg" alt="Ikeja apartment exterior">
+                        <img src="images/ikeja-2.jpg" alt="Ikeja common area">
+                        <img src="images/ikeja-3.jpg" alt="Ikeja bedroom">
+                    </div>
+                    <h3>Ikeja</h3>
+                    <p class="location-address">Coming Soon</p>
+                    <div class="location-info">
+                        <span><i class="fas fa-bed"></i> No Spaces Available</span>
+                        <span><i class="fas fa-door-open"></i> Bed Rooms</span>
+                    </div>
+                    <button class="select-location-btn" data-location="Ikeja">Not Available</button>
+                </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Room Types & Pricing -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="section-header centered">
+                <h2>Room Types & Pricing</h2>
+                <p>Choose the room type that fits your budget</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="available-badge">Available</div>
+                    <div class="room-type">4-Bed Room</div>
+                    <div class="price">₦20,000<span>/month</span></div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Shared Room (4 persons)</li>
+                        <li><i class="fas fa-check"></i> Water</li>
+                        <li><i class="fas fa-check"></i> Shared Bathroom</li>
+                        <li><i class="fas fa-check"></i> 24/7 Security</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Most Popular</div>
+                    <div class="room-type">6-Bed Room</div>
+                    <div class="price">₦25,000<span>/month</span></div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Shared Room (6 persons)</li>
+                        <li><i class="fas fa-check"></i> Water</li>
+                        <li><i class="fas fa-check"></i> Shared Bathroom</li>
+                        <li><i class="fas fa-check"></i> 24/7 Security</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="available-badge">Not Available</div>
+                    <div class="room-type">8-Bed Room</div>
+                    <div class="price">₦20,000<span>/month</span></div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Shared Room (8 persons)</li>
+                        <li><i class="fas fa-check"></i> Water</li>
+                        <li><i class="fas fa-check"></i> Shared Bathroom</li>
+                        <li><i class="fas fa-check"></i> 24/7 Security</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="available-badge">Available</div>
+                    <div class="room-type">12-Bed Room</div>
+                    <div class="price">₦20,000<span>/month</span></div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Shared Room (12 persons)</li>
+                        <li><i class="fas fa-check"></i> Water</li>
+                        <li><i class="fas fa-check"></i> Shared Bathroom</li>
+                        <li><i class="fas fa-check"></i> 24/7 Security</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking-section" id="booking">
+        <div class="container">
+            <div class="section-header centered">
+                <h2>Book Your Space</h2>
+                <p>Complete the form below to request a booking</p>
+            </div>
+
+            <div class="booking-form-container">
+                <div class="progress-bar">
+                    <div class="progress-step active" data-step="1">
+                        <div class="step-circle">1</div>
+                        <span>Location</span>
+                    </div>
+                    <div class="progress-step" data-step="2">
+                        <div class="step-circle">2</div>
+                        <span>Room Type</span>
+                    </div>
+                    <div class="progress-step" data-step="3">
+                        <div class="step-circle">3</div>
+                        <span>Personal Info</span>
+                    </div>
+                    <div class="progress-step" data-step="4">
+                        <div class="step-circle">4</div>
+                        <span>Documents</span>
+                    </div>
+                    <div class="progress-step" data-step="5">
+                        <div class="step-circle">5</div>
+                        <span>Payment</span>
+                    </div>
+                </div>
+
+                <form class="booking-form" id="bookingForm">
+                    <!-- Step 1: Location -->
+                    <div class="form-step active" data-step="1">
+                        <h3>Select Location</h3>
+                        <div class="radio-group">
+                            <label class="radio-card">
+                                <input type="radio" name="location" value="Ketu (29 Adebayo Street)">
+                                <div class="radio-content">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Ketu (29 Adebayo Street)</span>
+                                </div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="location" value="Ketu (36 Adebayo Street)">
+                                <div class="radio-content">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Ketu (36 Adebayo Street)</span>
+                                </div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="location" value="Ikeja">
+                                <div class="radio-content">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Ikeja</span>
+                                </div>
+                            </label>
+                        </div>
+                        <button type="button" class="next-btn">Next Step</button>
+                    </div>
+
+                    <!-- Step 2: Room Type -->
+                    <div class="form-step" data-step="2">
+                        <h3>Select Room Type</h3>
+                        <div class="radio-group">
+                            <label class="radio-card">
+                                <input type="radio" name="roomType" value="4-Bed Room - ₦20,000/month" required>
+                                <div class="radio-content">
+                                    <i class="fas fa-bed"></i>
+                                    <span>4-Bed Room</span>
+                                    <small>₦20,000/month</small>
+                                </div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="roomType" value="6-Bed Room - ₦25,000/month">
+                                <div class="radio-content">
+                                    <i class="fas fa-bed"></i>
+                                    <span>6-Bed Room</span>
+                                    <small>₦25,000/month</small>
+                                </div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="roomType" value="8-Bed Room - ₦20,000/month">
+                                <div class="radio-content">
+                                    <i class="fas fa-bed"></i>
+                                    <span>8-Bed Room</span>
+                                    <small>₦20,000/month</small>
+                                </div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="roomType" value="12-Bed Room - ₦20,000/month">
+                                <div class="radio-content">
+                                    <i class="fas fa-bed"></i>
+                                    <span>12-Bed Room</span>
+                                    <small>₦20,000/month</small>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="button-group">
+                            <button type="button" class="prev-btn">Previous</button>
+                            <button type="button" class="next-btn">Next Step</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Personal Information -->
+                    <div class="form-step" data-step="3">
+                        <h3>Personal Information</h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Full Name *</label>
+                                <input type="text" name="fullName" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address *</label>
+                                <input type="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number *</label>
+                                <input type="tel" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Sex *</label>
+                                <input type="text" name="sex" required>
+                            </div>
+                            <div class="form-group">
+                                <label>State of Origin *</label>
+                                <input type="text" name="stateOfOrigin" required>
+                            </div>
+                             <div class="form-group">
+                                <label>Local Government Area *</label>
+                                <input type="text" name="localGovernmentArea" required>
+                            </div>
+                             <div class="form-group">
+                                <label>Religion *</label>
+                                <input type="text" name="religion" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Date of Birth *</label>
+                                <input type="date" name="dob" required>
+                            </div>
+                             <div class="form-group">
+                                <label>Any Health Conditions? *</label>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="radio" name="healthConditions" value="Yes" required>
+                                        <span>Yes</span>
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="radio" name="healthConditions" value="No">
+                                        <span>No</span>
+                                    </label>
+                                </div>
+                            </div>
+                             <div class="form-group">
+                                <label>If Yes, Doctor Info</label>
+                                <input type="text" name="doctorInfo">
+                            </div>
+                            
+                            <div class="form-group full-width">
+                                <label>Occupation/Status *</label>
+                                <select name="occupation" required>
+                                    <option value="">Select Status</option>
+                                    <option value="Student">Student</option>
+                                    <option value="NYSC Member">NYSC Member</option>
+                                    <option value="Young Professional">Young Professional</option>
+                                    <option value="Intern">Intern</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                            <!-- Student Fields -->
+                            <div class="form-group full-width" id="studentFields" style="display: none;">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label>School Name *</label>
+                                        <input type="text" name="schoolName">
+                                    </div>
+                                    <div class="form-group full-width">
+                                        <label>School Address *</label>
+                                        <input type="text" name="schoolAddress">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- NYSC/Professional/Intern Fields -->
+                            <div class="form-group full-width" id="workplaceFields" style="display: none;">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label>Workplace Name *</label>
+                                        <input type="text" name="workplaceName">
+                                    </div>
+                                    <div class="form-group full-width">
+                                        <label>Workplace Address *</label>
+                                        <input type="text" name="workplaceAddress">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Role/Position *</label>
+                                        <input type="text" name="workplaceRole">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Employed Fields -->
+                            <div class="form-group full-width" id="employedFields" style="display: none;">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label>Workplace Name *</label>
+                                        <input type="text" name="employedWorkplace">
+                                    </div>
+                                    <div class="form-group full-width">
+                                        <label>Workplace Address *</label>
+                                        <input type="text" name="employedAddress">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Profession *</label>
+                                        <input type="text" name="profession">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Office Number *</label>
+                                        <input type="text" name="officeNumber">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Years Worked *</label>
+                                        <input type="number" name="yearsWorked" min="0">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group full-width">
+                                <label>Home Address *</label>
+                                <textarea name="address" rows="3" required></textarea>
+                            </div>
+                            <div class="form-group full-width">
+                                <label>Emergency Contact Name *</label>
+                                <input type="text" name="emergencyName" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Emergency Contact Phone *</label>
+                                <input type="tel" name="emergencyPhone" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Relationship *</label>
+                                <input type="text" name="emergencyRelation" required>
+                            </div>
+                        </div>
+                        <div class="form-group full-width">
+                                <label>Guarantor's Name (1) *</label>
+                                <input type="text" name="guarantorName1" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Guarantor's Phone (1) *</label>
+                                <input type="tel" name="guarantorPhone1" required>
+                            </div>
+                            <div class="form-group full-width">
+                                <label>Guarantor's Name (2) *</label>
+                                <input type="text" name="guarantorName2" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Guarantor's Phone (2) *</label>
+                                <input type="tel" name="guarantorPhone2" required>
+                            </div>
+                        <div class="button-group">
+                            <button type="button" class="prev-btn">Previous</button>
+                            <button type="button" class="next-btn">Next Step</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Documents Upload -->
+                    <div class="form-step" data-step="4">
+                        <h3>Upload Documents</h3>
+                        <div class="upload-section">
+                            <div class="upload-card">
+                                <i class="fas fa-id-card"></i>
+                                <h4>Valid ID Card</h4>
+                                <p>Upload National ID, Driver's License, or International Passport</p>
+                                <input type="file" id="idUpload" accept="image/*,.pdf" required>
+                                <label for="idUpload" class="upload-btn">
+                                    <i class="fas fa-upload"></i> Choose File
+                                </label>
+                                <span class="file-name" id="idFileName">No file chosen</span>
+                            </div>
+
+                            <div class="upload-card">
+                                <i class="fas fa-camera"></i>
+                                <h4>Passport Photograph</h4>
+                                <p>Upload a recent passport-sized photograph</p>
+                                <input type="file" id="photoUpload" accept="image/*" required>
+                                <label for="photoUpload" class="upload-btn">
+                                    <i class="fas fa-upload"></i> Choose File
+                                </label>
+                                <span class="file-name" id="photoFileName">No file chosen</span>
+                            </div>
+                        </div>
+                        <div class="form-group full-width">
+                            <label class="declaration-checkbox">
+                                <input type="checkbox" name="declaration" required>
+                                <span class="checkbox-text">
+                                    I hereby declare that the information provided is true, complete, and accurate. 
+            I fully understand that if I fail to comply with the terms and conditions of the 
+            BEDSPACE APARTMENT, or if any of the above declarations are found to be untrue, or 
+            if I am convicted of any criminal act against the FRN or declared wanted, the 
+            allotment of the bedspace will be terminated with immediate effect, and 
+            NEXT LEVEL RESOURCES shall be free from any form of liability and may disclose 
+            my information where necessary.
+                                </span>
+                            </label>
+                        </div>
+                        <div class="button-group">
+                            <button type="button" class="prev-btn">Previous</button>
+                            <button type="button" class="next-btn">Next Step</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Payment Breakdown -->
+                    <div class="form-step" data-step="5">
+                        <h3>Payment Summary</h3>
+                        <div class="payment-breakdown">
+                            <div class="breakdown-item">
+                                <span>Location:</span>
+                                <strong id="summaryLocation">-</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Room Type:</span>
+                                <strong id="summaryRoom">-</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Monthly Rent:</span>
+                                <strong id="monthlyRent">₦0</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>First 2 Months:</span>
+                                <strong id="twoMonths">₦0</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Registration Fee:</span>
+                                <strong id="registrationFee">₦7,000</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Caution Fee:</span>
+                                <strong id="cautionFee">₦5,000</strong>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Gas Fee:</span>
+                                <strong id="gasFee">₦6,000</strong>
+                            </div>
+                            <div class="breakdown-total">
+                                <span>Total Initial Payment:</span>
+                                <strong id="totalPayment">₦0</strong>
+                            </div>
+                        </div>
+
+                        <div class="payment-note">
+                            <i class="fas fa-info-circle"></i>
+                            <p>Your booking request will be sent for approval. Once approved, you will receive payment instructions via email and Whatsapp.</p>
+                        </div>
+
+                        <div class="button-group">
+                            <button type="button" class="prev-btn">Previous</button>
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i> Submit Booking Request
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+   <!-- Success Popup -->
+<div class="success-overlay" id="successOverlay" style="display: none !important;">
+    <div class="success-card">
+        <div class="success-icon">
+            <i class="fas fa-check"></i>
+        </div>
+        <h2>Registration Successful!</h2>
+        <p>
+            Thank you for your booking request. Check your email within the next 
+            <strong>24-48 hours</strong> for approval and payment instructions.
+        </p>
+        <button class="close-success-btn" onclick="closeSuccessPopup()">Close</button>
+    </div>
+</div>
+
+    <!-- Support/Complaint Section -->
+    <section class="support-section">
+        <div class="container">
+            <div class="support-content">
+                <div class="support-info">
+                    <h2>Need Help or Have a Complaint?</h2>
+                    <p>We're here to assist you. Submit your complaint or inquiry and we'll respond within 24 hours.</p>
+                    <div class="contact-methods">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Call Us</h4>
+                                <p>+234 123 456 7890</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email Us</h4>
+                                <p>support@graciousproperty.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="complaint-form" id="complaintForm">
+                    <h3>Submit a Complaint</h3>
+                    <div class="form-group">
+                        <input type="text" name="fullName" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="location" placeholder="Apartment Location">
+                    </div>
+                    <div class="form-group">
+                        <select name="category" required>
+                            <option value="">Complaint Category</option>
+                            <option value="Maintenance">Maintenance Issue</option>
+                            <option value="Payment">Payment Query</option>
+                            <option value="Security">Security Concern</option>
+                            <option value="Facilities">Facilities Problem</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="complaint" placeholder="Describe your complaint..." rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">
+                        <i class="fas fa-paper-plane"></i> Submit Complaint
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header centered">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about our apartments</p>
+            </div>
+
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>How do I book an apartment?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Complete the booking form above, upload required documents, and submit for approval. Once approved, you'll receive payment instructions.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>What is the payment structure?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Initial payment covers 2 months rent plus registration fee (₦7,000), caution fee (₦5,000) and gas fee - 2 months (₦6,000). Subsequent payments are monthly.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>What documents do I need?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You need a valid ID card (National ID, Driver's License, or Passport) and a recent passport photograph.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Are utilities included in the rent?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Electricity, water, bedspreads, kitchen utensils, gas cylinders and 24/7 security with many more are all included in your monthly rent.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Can I visit before booking?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! Contact us to schedule a viewing at any of our locations.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>What happens after I submit my booking?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Your request goes to our team for review. We'll contact you within 24-48 hours with approval status and payment details.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Gracious Property</h3>
+                    <p>Your trusted partner in Real Estate, Serviced Apartments, and Digital Services.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="real-estate.html">Real Estate</a></li>
+                        <li><a href="apartment.html">Apartments</a></li>
+                        <li><a href="digital-services.html">Digital Services</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contact Info</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i> +234 906 884 6924</li>
+                        <li><i class="fas fa-envelope"></i> info.graciousproperty@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 2, Biola Street, Alapere, Ketu, Lagos, Nigeria</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Work Hours</h4>
+                    <ul class="work-hours">
+                        <li>Mon - Fri: 9:00 AM - 6:00 PM</li>
+                        <li>Sat: 10:00 AM - 4:00 PM</li>
+                        <li>Sunday: Closed</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Gracious Property. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/apartment.js"></script>
+    <script>
+    // Smart navbar — show Dashboard if logged in
+    const userToken = localStorage.getItem('userToken');
+    const userDataNav = JSON.parse(localStorage.getItem('userData') || '{}');
+    const accountBtn = document.querySelector('.my-account-btn');
+
+    if (accountBtn && userToken) {
+        accountBtn.href = 'user-dashboard.html';
+        accountBtn.innerHTML = '<i class="fas fa-user-circle"></i> ' + (userDataNav.fullName ? userDataNav.fullName.split(' ')[0] : 'Dashboard');
+    }
+</script>
+</body>
+</html>

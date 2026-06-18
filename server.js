@@ -1,0 +1,53 @@
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const dotenv = require('dotenv');
+
+dotenv.config();
+
+const app = express();
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+app.use(express.static('./'));
+
+// Routes
+const contactRoute = require('./routes/contact');
+const newsletterRoute = require('./routes/newsletter');
+const bookingsRoute = require('./routes/bookings');
+const complaintsRoute = require('./routes/complaints');
+const digitalBookingsRoute = require('./routes/digital-bookings');
+const enrollmentsRoute = require('./routes/enrollments');
+const { router: adminRoute } = require('./routes/admin');
+const { router: usersRoute } = require('./routes/users');
+const paymentsRoute = require('./routes/payments');
+
+app.use('/api/contact', contactRoute);
+app.use('/api/newsletter', newsletterRoute);
+app.use('/api/bookings', bookingsRoute);
+app.use('/api/complaints', complaintsRoute);
+app.use('/api/payments', paymentsRoute);
+app.use('/api/digital-bookings', digitalBookingsRoute);
+app.use('/api/enrollments', enrollmentsRoute);
+app.use('/api/admin', adminRoute);
+app.use('/api/users', usersRoute);
+
+// Test route
+app.get('/', (req, res) => {
+    res.send('Gracious Property Server is Running!');
+});
+
+// Connect to MongoDB
+mongoose.connect(process.env.MONGO_URI, {
+    serverSelectionTimeoutMS: 5000,
+    family: 4
+})
+    .then(() => console.log('MongoDB Connected Successfully!'))
+    .catch(err => console.log('MongoDB Connection Error:', err));
+
+// Start server
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+});
